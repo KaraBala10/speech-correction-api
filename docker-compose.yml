@@ -1,0 +1,62 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: pronunciation_db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: pronunciation_db
+      MYSQL_USER: django
+      MYSQL_PASSWORD: django123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot123"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  phpmyadmin:
+    container_name: pronunciation_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: database
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "8081:80"
+    depends_on:
+      database:
+        condition: service_healthy
+
+  backend:
+    build:
+      context: .
+    container_name: pronunciation_backend
+    command: >
+      sh -c "
+        python manage.py makemigrations &&
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+    volumes:
+      - ./pronunciation_api:/code
+    ports:
+      - "9999:8000"
+    environment:
+      # you could use env_file: instead if you want to load from a file
+      MYSQL_DATABASE: pronunciation_db
+      MYSQL_USER: django
+      MYSQL_PASSWORD: django123
+      MYSQL_ROOT_PASSWORD: root123
+    restart: always
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  db_data:
