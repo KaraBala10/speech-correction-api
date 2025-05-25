@@ -1,4 +1,6 @@
 import imghdr
+import json
+import os
 from datetime import timedelta
 
 import redis
@@ -372,3 +374,25 @@ class PasswordResetConfirmView(APIView):
         return JsonResponse(
             {"message": "Password reset successfully."}, status=status.HTTP_200_OK
         )
+
+
+def load_json(relative_path):
+    full_path = os.path.join(settings.BASE_DIR, relative_path)
+    with open(full_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def ar_letters(request):
+    return JsonResponse(load_json("json/ar/letters.json"), safe=False)
+
+
+def ar_levels(request):
+    return JsonResponse(load_json("json/ar/levels.json"), safe=False)
+
+
+def en_letters(request):
+    return JsonResponse(load_json("json/en/letters.json"), safe=False)
+
+
+def en_levels(request):
+    return JsonResponse(load_json("json/en/levels.json"), safe=False)

@@ -10,6 +10,10 @@ from .views import (
     UpdateProfileView,
     UserProfileView,
     VerifyEmailView,
+    ar_letters,
+    ar_levels,
+    en_letters,
+    en_levels,
 )
 
 urlpatterns = [
@@ -30,4 +34,8 @@ urlpatterns = [
         PublicUserProfileView.as_view(),
         name="public-profile",
     ),
+    path("ar/letters/", ar_letters, name="ar-letters"),
+    path("ar/levels/", ar_levels, name="ar-levels"),
+    path("en/letters/", en_letters, name="en-letters"),
+    path("en/levels/", en_levels, name="en-levels"),
 ]

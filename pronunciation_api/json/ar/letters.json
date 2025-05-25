@@ -1,0 +1,200 @@
+{
+  "letters": [
+    {
+      "letter": "أ",
+      "word": "تفاحة",
+      "color": "bg-red-300",
+      "boxColor": "bg-red-400",
+      "wordImage": "https://static.vecteezy.com/system/resources/thumbnails/026/912/021/small/red-apple-generative-ai-png.png"
+    },
+    {
+      "letter": "ب",
+      "word": "كرة",
+      "color": "bg-yellow-200",
+      "boxColor": "bg-yellow-300",
+      "wordImage": "https://pngtree.com/so/cartoon-ball"
+    },
+    {
+      "letter": "ت",
+      "word": "قطة",
+      "color": "bg-green-200",
+      "boxColor": "bg-green-300",
+      "wordImage": "https://pngtree.com/free-png-vectors/cartoon-cat"
+    },
+    {
+      "letter": "ث",
+      "word": "ثعلب",
+      "color": "bg-blue-200",
+      "boxColor": "bg-blue-400",
+      "wordImage": "https://pngtree.com/so/cartoon-dog"
+    },
+    {
+      "letter": "ج",
+      "word": "جمل",
+      "color": "bg-purple-300",
+      "boxColor": "bg-purple-400",
+      "wordImage": "https://pngtree.com/so/cartoon-elephant"
+    },
+    {
+      "letter": "ح",
+      "word": "حصان",
+      "color": "bg-pink-300",
+      "boxColor": "bg-pink-400",
+      "wordImage": "https://pngtree.com/so/cartoon-fish"
+    },
+    {
+      "letter": "خ",
+      "word": "خروف",
+      "color": "bg-indigo-300",
+      "boxColor": "bg-indigo-400",
+      "wordImage": "https://www.vecteezy.com/free-png/giraffe"
+    },
+    {
+      "letter": "د",
+      "word": "ديناصور",
+      "color": "bg-red-300",
+      "boxColor": "bg-red-400",
+      "wordImage": "https://pngtree.com/so/cartoon-hat"
+    },
+    {
+      "letter": "ذ",
+      "word": "ذئب",
+      "color": "bg-teal-300",
+      "boxColor": "bg-teal-400",
+      "wordImage": "https://pngtree.com/so/ice-cream-cartoon"
+    },
+    {
+      "letter": "ر",
+      "word": "رمان",
+      "color": "bg-lime-300",
+      "boxColor": "bg-lime-400",
+      "wordImage": "https://pngtree.com/free-png-vectors/cartoon-juice"
+    },
+    {
+      "letter": "ز",
+      "word": "زرافة",
+      "color": "bg-cyan-300",
+      "boxColor": "bg-cyan-400",
+      "wordImage": "https://pngtree.com/so/kite"
+    },
+    {
+      "letter": "س",
+      "word": "سمكة",
+      "color": "bg-rose-300",
+      "boxColor": "bg-rose-400",
+      "wordImage": "https://www.vecteezy.com/free-png/cartoon-lion"
+    },
+    {
+      "letter": "ش",
+      "word": "شمس",
+      "color": "bg-orange-300",
+      "boxColor": "bg-orange-400",
+      "wordImage": "https://pngtree.com/so/cartoon-monkey"
+    },
+    {
+      "letter": "ص",
+      "word": "صقر",
+      "color": "bg-fuchsia-300",
+      "boxColor": "bg-fuchsia-400",
+      "wordImage": "https://pngtree.com/so/cartoon-nest"
+    },
+    {
+      "letter": "ض",
+      "word": "ضفدع",
+      "color": "bg-green-300",
+      "boxColor": "bg-green-400",
+      "wordImage": "https://pngtree.com/so/cartoon-octopus"
+    },
+    {
+      "letter": "ط",
+      "word": "طائرة",
+      "color": "bg-red-200",
+      "boxColor": "bg-red-300",
+      "wordImage": "https://pngtree.com/so/cartoon-pencil"
+    },
+    {
+      "letter": "ظ",
+      "word": "ظبي",
+      "color": "bg-blue-200",
+      "boxColor": "bg-blue-300",
+      "wordImage": "https://pngtree.com/so/cartoon-queen"
+    },
+    {
+      "letter": "ع",
+      "word": "عينب",
+      "color": "bg-yellow-200",
+      "boxColor": "bg-yellow-300",
+      "wordImage": "https://pngtree.com/so/cartoon-rainbow"
+    },
+    {
+      "letter": "غ",
+      "word": "غزال",
+      "color": "bg-orange-200",
+      "boxColor": "bg-orange-300",
+      "wordImage": "https://pngtree.com/so/cartoon-sun"
+    },
+    {
+      "letter": "ف",
+      "word": "فيل",
+      "color": "bg-green-200",
+      "boxColor": "bg-green-300",
+      "wordImage": "https://pngtree.com/so/cartoon-tiger"
+    },
+    {
+      "letter": "ق",
+      "word": "قلم",
+      "color": "bg-cyan-300",
+      "boxColor": "bg-cyan-400",
+      "wordImage": "https://pngtree.com/so/cartoon-umbrella"
+    },
+    {
+      "letter": "ك",
+      "word": "كتاب",
+      "color": "bg-purple-300",
+      "boxColor": "bg-purple-400",
+      "wordImage": "https://pngtree.com/so/cartoon-violin"
+    },
+    {
+      "letter": "ل",
+      "word": "ليمون",
+      "color": "bg-indigo-200",
+      "boxColor": "bg-indigo-300",
+      "wordImage": "https://pngtree.com/so/cartoon-whale"
+    },
+    {
+      "letter": "م",
+      "word": "موز",
+      "color": "bg-pink-200",
+      "boxColor": "bg-pink-300",
+      "wordImage": "https://pngtree.com/so/cartoon-xylophone"
+    },
+    {
+      "letter": "ن",
+      "word": "نحلة",
+      "color": "bg-lime-200",
+      "boxColor": "bg-lime-300",
+      "wordImage": "https://pngtree.com/so/cartoon-yogurt"
+    },
+    {
+      "letter": "هـ",
+      "word": "هدهد",
+      "color": "bg-rose-200",
+      "boxColor": "bg-rose-300",
+      "wordImage": "https://pngtree.com/so/cartoon-zebra"
+    },
+    {
+      "letter": "و",
+      "word": "وردة",
+      "color": "bg-yellow-300",
+      "boxColor": "bg-yellow-400",
+      "wordImage": "https://pngtree.com/so/cartoon-flower"
+    },
+    {
+      "letter": "ي",
+      "word": "يد",
+      "color": "bg-teal-200",
+      "boxColor": "bg-teal-300",
+      "wordImage": "https://pngtree.com/so/cartoon-hand"
+    }
+  ]
+}

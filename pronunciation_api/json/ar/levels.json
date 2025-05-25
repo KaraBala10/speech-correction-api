@@ -1,0 +1,704 @@
+{
+  "levels": [
+    {
+      "letter": "أ",
+      "level": "1",
+      "test": "تفاحة"
+    },
+    {
+      "letter": "أ",
+      "level": "2",
+      "test": "أسد"
+    },
+    {
+      "letter": "أ",
+      "level": "3",
+      "test": "أرنب"
+    },
+    {
+      "letter": "أ",
+      "level": "4",
+      "test": "أب"
+    },
+    {
+      "letter": "أ",
+      "level": "5",
+      "test": "أناناس"
+    },
+    {
+      "letter": "ب",
+      "level": "1",
+      "test": "بطة"
+    },
+    {
+      "letter": "ب",
+      "level": "2",
+      "test": "بقرة"
+    },
+    {
+      "letter": "ب",
+      "level": "3",
+      "test": "باب"
+    },
+    {
+      "letter": "ب",
+      "level": "4",
+      "test": "بصل"
+    },
+    {
+      "letter": "ب",
+      "level": "5",
+      "test": "برتقال"
+    },
+    {
+      "letter": "ت",
+      "level": "1",
+      "test": "تفاحة"
+    },
+    {
+      "letter": "ت",
+      "level": "2",
+      "test": "تاج"
+    },
+    {
+      "letter": "ت",
+      "level": "3",
+      "test": "تلفاز"
+    },
+    {
+      "letter": "ت",
+      "level": "4",
+      "test": "تمساح"
+    },
+    {
+      "letter": "ت",
+      "level": "5",
+      "test": "تنين"
+    },
+    {
+      "letter": "ث",
+      "level": "1",
+      "test": "ثعلب"
+    },
+    {
+      "letter": "ث",
+      "level": "2",
+      "test": "ثمر"
+    },
+    {
+      "letter": "ث",
+      "level": "3",
+      "test": "ثوب"
+    },
+    {
+      "letter": "ث",
+      "level": "4",
+      "test": "ثريا"
+    },
+    {
+      "letter": "ث",
+      "level": "5",
+      "test": "ثلج"
+    },
+    {
+      "letter": "ج",
+      "level": "1",
+      "test": "جمل"
+    },
+    {
+      "letter": "ج",
+      "level": "2",
+      "test": "جسر"
+    },
+    {
+      "letter": "ج",
+      "level": "3",
+      "test": "جزرة"
+    },
+    {
+      "letter": "ج",
+      "level": "4",
+      "test": "جوال"
+    },
+    {
+      "letter": "ج",
+      "level": "5",
+      "test": "جرس"
+    },
+    {
+      "letter": "ح",
+      "level": "1",
+      "test": "حصان"
+    },
+    {
+      "letter": "ح",
+      "level": "2",
+      "test": "حمار"
+    },
+    {
+      "letter": "ح",
+      "level": "3",
+      "test": "حوت"
+    },
+    {
+      "letter": "ح",
+      "level": "4",
+      "test": "حديقة"
+    },
+    {
+      "letter": "ح",
+      "level": "5",
+      "test": "حليب"
+    },
+    {
+      "letter": "خ",
+      "level": "1",
+      "test": "خروف"
+    },
+    {
+      "letter": "خ",
+      "level": "2",
+      "test": "خيار"
+    },
+    {
+      "letter": "خ",
+      "level": "3",
+      "test": "خبز"
+    },
+    {
+      "letter": "خ",
+      "level": "4",
+      "test": "خريطة"
+    },
+    {
+      "letter": "خ",
+      "level": "5",
+      "test": "خنجر"
+    },
+    {
+      "letter": "د",
+      "level": "1",
+      "test": "ديك"
+    },
+    {
+      "letter": "د",
+      "level": "2",
+      "test": "دجاجة"
+    },
+    {
+      "letter": "د",
+      "level": "3",
+      "test": "دب"
+    },
+    {
+      "letter": "د",
+      "level": "4",
+      "test": "دلو"
+    },
+    {
+      "letter": "د",
+      "level": "5",
+      "test": "دراجة"
+    },
+    {
+      "letter": "ذ",
+      "level": "1",
+      "test": "ذئب"
+    },
+    {
+      "letter": "ذ",
+      "level": "2",
+      "test": "ذيل"
+    },
+    {
+      "letter": "ذ",
+      "level": "3",
+      "test": "ذهب"
+    },
+    {
+      "letter": "ذ",
+      "level": "4",
+      "test": "ذرة"
+    },
+    {
+      "letter": "ذ",
+      "level": "5",
+      "test": "ذقن"
+    },
+    {
+      "letter": "ر",
+      "level": "1",
+      "test": "رمان"
+    },
+    {
+      "letter": "ر",
+      "level": "2",
+      "test": "رجل"
+    },
+    {
+      "letter": "ر",
+      "level": "3",
+      "test": "رأس"
+    },
+    {
+      "letter": "ر",
+      "level": "4",
+      "test": "رمل"
+    },
+    {
+      "letter": "ر",
+      "level": "5",
+      "test": "روبوت"
+    },
+    {
+      "letter": "ز",
+      "level": "1",
+      "test": "زرافة"
+    },
+    {
+      "letter": "ز",
+      "level": "2",
+      "test": "زيت"
+    },
+    {
+      "letter": "ز",
+      "level": "3",
+      "test": "زبدة"
+    },
+    {
+      "letter": "ز",
+      "level": "4",
+      "test": "زهرة"
+    },
+    {
+      "letter": "ز",
+      "level": "5",
+      "test": "زقاق"
+    },
+    {
+      "letter": "س",
+      "level": "1",
+      "test": "سمكة"
+    },
+    {
+      "letter": "س",
+      "level": "2",
+      "test": "سلحفاة"
+    },
+    {
+      "letter": "س",
+      "level": "3",
+      "test": "سيارة"
+    },
+    {
+      "letter": "س",
+      "level": "4",
+      "test": "سفينة"
+    },
+    {
+      "letter": "س",
+      "level": "5",
+      "test": "سيف"
+    },
+    {
+      "letter": "ش",
+      "level": "1",
+      "test": "شمس"
+    },
+    {
+      "letter": "ش",
+      "level": "2",
+      "test": "شجرة"
+    },
+    {
+      "letter": "ش",
+      "level": "3",
+      "test": "شمعة"
+    },
+    {
+      "letter": "ش",
+      "level": "4",
+      "test": "شباك"
+    },
+    {
+      "letter": "ش",
+      "level": "5",
+      "test": "شاي"
+    },
+    {
+      "letter": "ص",
+      "level": "1",
+      "test": "صقر"
+    },
+    {
+      "letter": "ص",
+      "level": "2",
+      "test": "صابون"
+    },
+    {
+      "letter": "ص",
+      "level": "3",
+      "test": "صندوق"
+    },
+    {
+      "letter": "ص",
+      "level": "4",
+      "test": "صورة"
+    },
+    {
+      "letter": "ص",
+      "level": "5",
+      "test": "صاروخ"
+    },
+    {
+      "letter": "ض",
+      "level": "1",
+      "test": "ضفدع"
+    },
+    {
+      "letter": "ض",
+      "level": "2",
+      "test": "ضوء"
+    },
+    {
+      "letter": "ض",
+      "level": "3",
+      "test": "ضرس"
+    },
+    {
+      "letter": "ض",
+      "level": "4",
+      "test": "ضباب"
+    },
+    {
+      "letter": "ض",
+      "level": "5",
+      "test": "ضغط"
+    },
+    {
+      "letter": "ط",
+      "level": "1",
+      "test": "طائرة"
+    },
+    {
+      "letter": "ط",
+      "level": "2",
+      "test": "طاولة"
+    },
+    {
+      "letter": "ط",
+      "level": "3",
+      "test": "طين"
+    },
+    {
+      "letter": "ط",
+      "level": "4",
+      "test": "طبيب"
+    },
+    {
+      "letter": "ط",
+      "level": "5",
+      "test": "طبق"
+    },
+    {
+      "letter": "ظ",
+      "level": "1",
+      "test": "ظرف"
+    },
+    {
+      "letter": "ظ",
+      "level": "2",
+      "test": "ظل"
+    },
+    {
+      "letter": "ظ",
+      "level": "3",
+      "test": "ظهيرة"
+    },
+    {
+      "letter": "ظ",
+      "level": "4",
+      "test": "ظبي"
+    },
+    {
+      "letter": "ظ",
+      "level": "5",
+      "test": "ظفر"
+    },
+    {
+      "letter": "ع",
+      "level": "1",
+      "test": "عنب"
+    },
+    {
+      "letter": "ع",
+      "level": "2",
+      "test": "علم"
+    },
+    {
+      "letter": "ع",
+      "level": "3",
+      "test": "عين"
+    },
+    {
+      "letter": "ع",
+      "level": "4",
+      "test": "عصفور"
+    },
+    {
+      "letter": "ع",
+      "level": "5",
+      "test": "عرق"
+    },
+    {
+      "letter": "غ",
+      "level": "1",
+      "test": "غزال"
+    },
+    {
+      "letter": "غ",
+      "level": "2",
+      "test": "غيمة"
+    },
+    {
+      "letter": "غ",
+      "level": "3",
+      "test": "غسالة"
+    },
+    {
+      "letter": "غ",
+      "level": "4",
+      "test": "غابة"
+    },
+    {
+      "letter": "غ",
+      "level": "5",
+      "test": "غلاف"
+    },
+    {
+      "letter": "ف",
+      "level": "1",
+      "test": "فيل"
+    },
+    {
+      "letter": "ف",
+      "level": "2",
+      "test": "فراشة"
+    },
+    {
+      "letter": "ف",
+      "level": "3",
+      "test": "فم"
+    },
+    {
+      "letter": "ف",
+      "level": "4",
+      "test": "فاصوليا"
+    },
+    {
+      "letter": "ف",
+      "level": "5",
+      "test": "فانوس"
+    },
+    {
+      "letter": "ق",
+      "level": "1",
+      "test": "قلم"
+    },
+    {
+      "letter": "ق",
+      "level": "2",
+      "test": "قرد"
+    },
+    {
+      "letter": "ق",
+      "level": "3",
+      "test": "قطار"
+    },
+    {
+      "letter": "ق",
+      "level": "4",
+      "test": "قبعة"
+    },
+    {
+      "letter": "ق",
+      "level": "5",
+      "test": "قمر"
+    },
+    {
+      "letter": "ك",
+      "level": "1",
+      "test": "كتاب"
+    },
+    {
+      "letter": "ك",
+      "level": "2",
+      "test": "كرة"
+    },
+    {
+      "letter": "ك",
+      "level": "3",
+      "test": "كوب"
+    },
+    {
+      "letter": "ك",
+      "level": "4",
+      "test": "كنز"
+    },
+    {
+      "letter": "ك",
+      "level": "5",
+      "test": "كلب"
+    },
+    {
+      "letter": "ل",
+      "level": "1",
+      "test": "ليمون"
+    },
+    {
+      "letter": "ل",
+      "level": "2",
+      "test": "لعب"
+    },
+    {
+      "letter": "ل",
+      "level": "3",
+      "test": "لسان"
+    },
+    {
+      "letter": "ل",
+      "level": "4",
+      "test": "لؤلؤ"
+    },
+    {
+      "letter": "ل",
+      "level": "5",
+      "test": "لوح"
+    },
+    {
+      "letter": "م",
+      "level": "1",
+      "test": "موز"
+    },
+    {
+      "letter": "م",
+      "level": "2",
+      "test": "مطر"
+    },
+    {
+      "letter": "م",
+      "level": "3",
+      "test": "مرآة"
+    },
+    {
+      "letter": "م",
+      "level": "4",
+      "test": "مروحة"
+    },
+    {
+      "letter": "م",
+      "level": "5",
+      "test": "ملعقة"
+    },
+    {
+      "letter": "ن",
+      "level": "1",
+      "test": "نحلة"
+    },
+    {
+      "letter": "ن",
+      "level": "2",
+      "test": "نمر"
+    },
+    {
+      "letter": "ن",
+      "level": "3",
+      "test": "نار"
+    },
+    {
+      "letter": "ن",
+      "level": "4",
+      "test": "نظارة"
+    },
+    {
+      "letter": "ن",
+      "level": "5",
+      "test": "نجم"
+    },
+    {
+      "letter": "هـ",
+      "level": "1",
+      "test": "هدهد"
+    },
+    {
+      "letter": "هـ",
+      "level": "2",
+      "test": "هاتف"
+    },
+    {
+      "letter": "هـ",
+      "level": "3",
+      "test": "هلال"
+    },
+    {
+      "letter": "هـ",
+      "level": "4",
+      "test": "هرم"
+    },
+    {
+      "letter": "هـ",
+      "level": "5",
+      "test": "هواية"
+    },
+    {
+      "letter": "و",
+      "level": "1",
+      "test": "وردة"
+    },
+    {
+      "letter": "و",
+      "level": "2",
+      "test": "ورق"
+    },
+    {
+      "letter": "و",
+      "level": "3",
+      "test": "وزة"
+    },
+    {
+      "letter": "و",
+      "level": "4",
+      "test": "وقود"
+    },
+    {
+      "letter": "و",
+      "level": "5",
+      "test": "وجبة"
+    },
+    {
+      "letter": "ي",
+      "level": "1",
+      "test": "يد"
+    },
+    {
+      "letter": "ي",
+      "level": "2",
+      "test": "يوسف"
+    },
+    {
+      "letter": "ي",
+      "level": "3",
+      "test": "يقطين"
+    },
+    {
+      "letter": "ي",
+      "level": "4",
+      "test": "يمامة"
+    },
+    {
+      "letter": "ي",
+      "level": "5",
+      "test": "يابسة"
+    }
+  ]
+}
