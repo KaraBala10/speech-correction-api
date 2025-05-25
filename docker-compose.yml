@@ -57,6 +57,22 @@ services:
     depends_on:
       database:
         condition: service_healthy
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  
+  celery:
+    build:
+      context: .
+    command:   celery -A pronunciation_api.celery worker --loglevel=info
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    volumes:
+      - ./pronunciation_api:/code
+
 
 volumes:
   db_data:
