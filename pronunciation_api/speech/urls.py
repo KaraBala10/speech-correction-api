@@ -14,6 +14,7 @@ from .views import (
     ar_levels,
     en_letters,
     en_levels,
+    transcribe,
 )
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
     path("ar/levels/", ar_levels, name="ar-levels"),
     path("en/letters/", en_letters, name="en-letters"),
     path("en/levels/", en_levels, name="en-levels"),
+    path("transcribe/", transcribe, name="transcribe"),
 ]

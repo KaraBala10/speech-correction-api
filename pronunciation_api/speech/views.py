@@ -1,9 +1,11 @@
 import imghdr
 import json
 import os
+import tempfile
 from datetime import timedelta
 
 import redis
+import whisper
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash
 from django.contrib.auth.tokens import default_token_generator
@@ -15,6 +17,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -204,14 +207,23 @@ class LoginView(generics.GenericAPIView):
     def post(self, request):
         username = request.data.get("username")
         password = request.data.get("password")
+
+        if not username or not password:
+            return Response(
+                {"error": "Username and password are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         user = authenticate(username=username, password=password)
 
-        if user:
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key}, status=status.HTTP_200_OK)
-        return Response(
-            {"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST
-        )
+        if user is None:
+            return Response(
+                {"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        token, _ = Token.objects.get_or_create(user=user)
+
+        return Response({"token": token.key}, status=status.HTTP_200_OK)
 
 
 # User Profile API
@@ -376,6 +388,7 @@ class PasswordResetConfirmView(APIView):
         )
 
 
+# levels
 def load_json(relative_path):
     full_path = os.path.join(settings.BASE_DIR, relative_path)
     with open(full_path, encoding="utf-8") as f:
@@ -396,3 +409,84 @@ def en_letters(request):
 
 def en_levels(request):
     return JsonResponse(load_json("json/en/levels.json"), safe=False)
+
+
+# ai
+
+# MODEL_DIR = "models"
+# MODEL_SIZE = "tiny"
+
+# if not os.path.exists(MODEL_DIR):
+#     os.makedirs(MODEL_DIR)
+
+# _model = None
+
+
+# def get_model():
+#     global _model
+#     if _model is None:
+#         _model = whisper.load_model(MODEL_SIZE, download_root=MODEL_DIR)
+#     return _model
+
+
+# @csrf_exempt
+# def transcribe(request):
+#     if request.method != "POST":
+#         return JsonResponse({"error": "Invalid method"}, status=405)
+
+#     if "audio" not in request.FILES:
+#         return JsonResponse({"error": "No audio file provided"}, status=400)
+
+#     audio_file = request.FILES["audio"]
+
+#     with tempfile.NamedTemporaryFile(suffix=".wav", delete=True) as temp:
+#         for chunk in audio_file.chunks():
+#             temp.write(chunk)
+#         temp.flush()
+#         try:
+#             model = get_model()
+#             result = model.transcribe(temp.name, language="ar", fp16=False)
+#         except Exception as e:
+#             return JsonResponse({"error": str(e)}, status=500)
+
+#     return JsonResponse({"text": result["text"]}, status=200)
+
+
+@csrf_exempt
+def transcribe(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Invalid method"}, status=405)
+
+    if "audio" not in request.FILES:
+        return JsonResponse({"error": "No audio file provided"}, status=400)
+
+    # Retrieve and ignore audio if present
+    _ = request.FILES.get("audio")  # This will be None if not present
+
+    # Accept target_word from JSON or form data
+    if request.content_type == "application/json":
+        try:
+            data = json.loads(request.body)
+            target_word = data.get("target_word")
+        except Exception:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    else:
+        target_word = request.POST.get("target_word")
+
+    if not target_word:
+        return JsonResponse({"error": "No target_word provided"}, status=400)
+
+    reference = "تفاخة"
+    # Calculate percentage of similar characters (simple approach: count matches at same positions)
+    matches = sum(1 for a, b in zip(target_word, reference) if a == b)
+    max_len = max(len(target_word), len(reference))
+    percentage = (matches / max_len) * 100 if max_len > 0 else 0
+
+    return JsonResponse(
+        {
+            "target_word": target_word,
+            "reference": reference,
+            "similarity_percentage": round(percentage, 2),
+        },
+        status=200,
+    )
