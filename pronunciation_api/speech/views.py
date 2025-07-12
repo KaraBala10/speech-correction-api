@@ -1,11 +1,13 @@
 import imghdr
 import json
 import os
-import tempfile
+
+# import tempfile
 from datetime import timedelta
 
 import redis
-import whisper
+
+# import whisper
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash
 from django.contrib.auth.tokens import default_token_generator
