@@ -462,33 +462,49 @@ def transcribe(request):
     if "audio" not in request.FILES:
         return JsonResponse({"error": "No audio file provided"}, status=400)
 
-    # Retrieve and ignore audio if present
-    _ = request.FILES.get("audio")  # This will be None if not present
+    _ = request.FILES.get("audio")
 
-    # Accept target_word from JSON or form data
     if request.content_type == "application/json":
         try:
             data = json.loads(request.body)
             target_word = data.get("target_word")
+            target_char = data.get("target_char")
         except Exception:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
     else:
         target_word = request.POST.get("target_word")
+        target_char = request.POST.get("target_char")
 
     if not target_word:
         return JsonResponse({"error": "No target_word provided"}, status=400)
+    if not target_char or len(target_char) != 1:
+        return JsonResponse({"error": "target_char must be one character"}, status=400)
 
     reference = "تفاخة"
-    # Calculate percentage of similar characters (simple approach: count matches at same positions)
     matches = sum(1 for a, b in zip(target_word, reference) if a == b)
     max_len = max(len(target_word), len(reference))
     percentage = (matches / max_len) * 100 if max_len > 0 else 0
+
+    test_passed = True
+    message = "لقد اجتزت الاختبار بنجاح"
+
+    if percentage < 60:
+        test_passed = False
+        message = "لقد نطقت اغلب الاحرف بشكل خاطئ، استمع مرة اخرى للصوت المسجل ثم حاول مرة اخرى"
+    else:
+        for a, b in zip(target_word, reference):
+            if a != b and b == target_char:
+                test_passed = False
+                message = "خطأ في الحرف المستهدف"
+                break
 
     return JsonResponse(
         {
             "target_word": target_word,
             "reference": reference,
             "similarity_percentage": round(percentage, 2),
+            "test_passed": test_passed,
+            "message": message if not test_passed else "",
         },
         status=200,
     )
