@@ -1,15 +1,14 @@
 import imghdr
 import json
 import os
-
 # import tempfile
 from datetime import timedelta
 
 import redis
-
 # import whisper
 from django.conf import settings
-from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash
+from django.contrib.auth import (authenticate, get_user_model,
+                                 update_session_auth_hash)
 from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
@@ -480,33 +479,29 @@ def transcribe(request):
     if not target_char or len(target_char) != 1:
         return JsonResponse({"error": "target_char must be one character"}, status=400)
 
-    reference = "تفاخة"
-    matches = sum(1 for a, b in zip(target_word, reference) if a == b)
-    max_len = max(len(target_word), len(reference))
+    reference = "تفاخة"  # this is the learner's pronunciation
+    matches = sum(1 for a, b in zip(reference, target_word) if a == b)
+    max_len = max(len(reference), len(target_word))
     percentage = (matches / max_len) * 100 if max_len > 0 else 0
 
-    test_passed = True
-    message = "لقد اجتزت الاختبار بنجاح"
-
-    if percentage < 60:
+    if target_char not in target_word:
+        test_passed = False
+        message = "الحرف المستهدف غير موجود في الكلمة المرجعية"
+    elif target_char in target_word and target_char not in reference:
+        test_passed = False
+        message = "خطأ في الحرف المستهدف"
+    elif percentage < 60:
         test_passed = False
         message = "لقد نطقت اغلب الاحرف بشكل خاطئ، استمع مرة اخرى للصوت المسجل ثم حاول مرة اخرى"
     else:
-        positions = [i for i, c in enumerate(reference) if c == target_char]
-        mismatch_in_target_char = False
-
-        if not positions:
-            test_passed = False
-            message = "الحرف المستهدف غير موجود في الكلمة المرجعية"
-        else:
-            for i in positions:
-                if i >= len(target_word) or target_word[i] != target_char:
-                    mismatch_in_target_char = True
+        test_passed = True
+        message = "مبارك، لقد اجتزت الاختبار بنجاح"
+        for i, c in enumerate(target_word):
+            if c == target_char:
+                if i >= len(reference) or reference[i] != target_char:
+                    test_passed = False
+                    message = "خطأ في الحرف المستهدف"
                     break
-
-            if mismatch_in_target_char:
-                test_passed = False
-                message = "خطأ في الحرف المستهدف"
 
     return JsonResponse(
         {
