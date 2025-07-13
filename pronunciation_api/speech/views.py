@@ -492,11 +492,21 @@ def transcribe(request):
         test_passed = False
         message = "لقد نطقت اغلب الاحرف بشكل خاطئ، استمع مرة اخرى للصوت المسجل ثم حاول مرة اخرى"
     else:
-        for a, b in zip(target_word, reference):
-            if a != b and b == target_char:
+        positions = [i for i, c in enumerate(reference) if c == target_char]
+        mismatch_in_target_char = False
+
+        if not positions:
+            test_passed = False
+            message = "الحرف المستهدف غير موجود في الكلمة المرجعية"
+        else:
+            for i in positions:
+                if i >= len(target_word) or target_word[i] != target_char:
+                    mismatch_in_target_char = True
+                    break
+
+            if mismatch_in_target_char:
                 test_passed = False
                 message = "خطأ في الحرف المستهدف"
-                break
 
     return JsonResponse(
         {
