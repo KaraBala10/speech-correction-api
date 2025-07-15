@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     "speech",
     "corsheaders",
+    "jazzmin",
     "rest_framework.authtoken",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -168,4 +169,17 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     }
+}
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Speech Correction Admin",
+    "site_header": "Speech Correction Dashboard",
+    "site_logo": "media/your_logo.png",
+    "welcome_sign": "Welcome to the best admin panel!",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "order_with_respect_to": ["speech", "auth"],
 }
