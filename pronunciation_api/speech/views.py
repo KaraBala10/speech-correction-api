@@ -27,7 +27,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import CustomUser, Language, Letter, Level, Profile
+from .models import CustomUser, Language, Letter, Level, Profile, Quiz, Skill
 from .serializers import ProfileSerializer, UserSerializer
 from .tasks import send_verification_email
 
@@ -595,3 +595,237 @@ def get_levels_by_letter(request, language_code, letter):
         )
 
     return JsonResponse({"levels": data})
+
+
+# Skills and Quizzes API Views
+@require_http_methods(["GET"])
+def get_skills(request):
+    """Get all available skills"""
+    skills = Skill.objects.filter(is_active=True).order_by("order")
+
+    data = []
+    for skill in skills:
+        data.append(
+            {
+                "id": skill.id,
+                "skill_name": skill.skill_name,
+                "skill_desc": skill.skill_desc,
+                "order": skill.order,
+                "created_at": skill.created_at.isoformat(),
+            }
+        )
+
+    return JsonResponse({"skills": data})
+
+
+@require_http_methods(["GET"])
+def get_skill_by_id(request, skill_id):
+    """Get a specific skill by ID"""
+    try:
+        skill = get_object_or_404(Skill, id=skill_id, is_active=True)
+
+        data = {
+            "id": skill.id,
+            "skill_name": skill.skill_name,
+            "skill_desc": skill.skill_desc,
+            "order": skill.order,
+            "created_at": skill.created_at.isoformat(),
+        }
+
+        return JsonResponse({"skill": data})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+@require_http_methods(["GET"])
+def get_quizzes(request):
+    """Get all quizzes with optional filtering"""
+    skill_id = request.GET.get("skill_id")
+    difficulty = request.GET.get("difficulty")
+    lesson_name = request.GET.get("lesson_name")
+
+    quizzes = Quiz.objects.filter(is_active=True)
+
+    if skill_id:
+        quizzes = quizzes.filter(skill_id=skill_id)
+    if difficulty:
+        quizzes = quizzes.filter(difficulty=difficulty)
+    if lesson_name:
+        quizzes = quizzes.filter(lesson_name__icontains=lesson_name)
+
+    quizzes = quizzes.order_by("lesson_name", "order")
+
+    data = []
+    for quiz in quizzes:
+        data.append(
+            {
+                "id": quiz.id,
+                "lesson_name": quiz.lesson_name,
+                "question": quiz.question,
+                "options": quiz.options,
+                "correct_answer": quiz.correct_answer,
+                "skill": (
+                    {
+                        "id": quiz.skill.id,
+                        "skill_name": quiz.skill.skill_name,
+                    }
+                    if quiz.skill
+                    else None
+                ),
+                "difficulty": quiz.difficulty,
+                "order": quiz.order,
+                "created_at": quiz.created_at.isoformat(),
+            }
+        )
+
+    return JsonResponse({"quizzes": data})
+
+
+@require_http_methods(["GET"])
+def get_quizzes_by_skill(request, skill_id):
+    """Get quizzes for a specific skill"""
+    try:
+        skill = get_object_or_404(Skill, id=skill_id, is_active=True)
+        quizzes = Quiz.objects.filter(skill=skill, is_active=True).order_by(
+            "lesson_name", "order"
+        )
+
+        data = []
+        for quiz in quizzes:
+            data.append(
+                {
+                    "id": quiz.id,
+                    "lesson_name": quiz.lesson_name,
+                    "question": quiz.question,
+                    "options": quiz.options,
+                    "correct_answer": quiz.correct_answer,
+                    "difficulty": quiz.difficulty,
+                    "order": quiz.order,
+                    "created_at": quiz.created_at.isoformat(),
+                }
+            )
+
+        return JsonResponse(
+            {
+                "skill": {
+                    "id": skill.id,
+                    "skill_name": skill.skill_name,
+                    "skill_desc": skill.skill_desc,
+                },
+                "quizzes": data,
+            }
+        )
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+@require_http_methods(["GET"])
+def get_quiz_by_id(request, quiz_id):
+    """Get a specific quiz by ID"""
+    try:
+        quiz = get_object_or_404(Quiz, id=quiz_id, is_active=True)
+
+        data = {
+            "id": quiz.id,
+            "lesson_name": quiz.lesson_name,
+            "question": quiz.question,
+            "options": quiz.options,
+            "correct_answer": quiz.correct_answer,
+            "skill": (
+                {
+                    "id": quiz.skill.id,
+                    "skill_name": quiz.skill.skill_name,
+                }
+                if quiz.skill
+                else None
+            ),
+            "difficulty": quiz.difficulty,
+            "order": quiz.order,
+            "created_at": quiz.created_at.isoformat(),
+        }
+
+        return JsonResponse({"quiz": data})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+@require_http_methods(["GET"])
+def get_quizzes_by_lesson(request, lesson_name):
+    """Get all quizzes for a specific lesson"""
+    try:
+        quizzes = Quiz.objects.filter(
+            lesson_name__iexact=lesson_name, is_active=True
+        ).order_by("order")
+
+        data = []
+        for quiz in quizzes:
+            data.append(
+                {
+                    "id": quiz.id,
+                    "lesson_name": quiz.lesson_name,
+                    "question": quiz.question,
+                    "options": quiz.options,
+                    "correct_answer": quiz.correct_answer,
+                    "skill": (
+                        {
+                            "id": quiz.skill.id,
+                            "skill_name": quiz.skill.skill_name,
+                        }
+                        if quiz.skill
+                        else None
+                    ),
+                    "difficulty": quiz.difficulty,
+                    "order": quiz.order,
+                    "created_at": quiz.created_at.isoformat(),
+                }
+            )
+
+        return JsonResponse({"lesson_name": lesson_name, "quizzes": data})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def submit_quiz_answer(request):
+    """Submit and validate a quiz answer"""
+    if request.method != "POST":
+        return JsonResponse({"error": "Invalid method"}, status=405)
+
+    try:
+        if request.content_type == "application/json":
+            data = json.loads(request.body)
+        else:
+            data = request.POST.dict()
+
+        quiz_id = data.get("quiz_id")
+        user_answer = data.get("user_answer")
+        user_id = data.get("user_id")
+
+        if not quiz_id or not user_answer:
+            return JsonResponse({"error": "Missing quiz_id or user_answer"}, status=400)
+
+        quiz = get_object_or_404(Quiz, id=quiz_id, is_active=True)
+        is_correct = user_answer.strip().lower() == quiz.correct_answer.strip().lower()
+
+        response_data = {
+            "quiz_id": quiz_id,
+            "user_answer": user_answer,
+            "correct_answer": quiz.correct_answer,
+            "is_correct": is_correct,
+            "lesson_name": quiz.lesson_name,
+        }
+
+        # If user_id is provided, you could save the result to track progress
+        if user_id:
+            try:
+                CustomUser.objects.get(id=user_id)
+                # Here you could create a QuizAttempt model to track user quiz attempts
+                response_data["user_id"] = user_id
+            except CustomUser.DoesNotExist:
+                pass
+
+        return JsonResponse(response_data)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)

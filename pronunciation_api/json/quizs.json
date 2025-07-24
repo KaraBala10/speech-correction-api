@@ -1,0 +1,369 @@
+[
+     {
+    "lessonName": "Pronouns and Their Usage",
+    "question": "Which word is a pronoun in this sentence: 'Sara loves her dog'?",
+    "options": ["Sara", "loves", "her", "dog"],
+    "correct_answer": "her"
+  },
+  {
+    "lessonName": "Pronouns and Their Usage",
+    "question": "____ went to the store by herself.",
+    "options": ["She", "Her", "Hers", "They"],
+    "correct_answer": "She"
+  },
+  {
+    "lessonName": "Pronouns and Their Usage",
+    "question": "This is my book. It is ____.",
+    "options": ["me", "mine", "my", "I"],
+    "correct_answer": "mine"
+  },
+  {
+    "lessonName": "Pronouns and Their Usage",
+    "question": "Choose the correct pronoun: 'John and ____ are going to the park.'",
+    "options": ["I", "me", "mine", "my"],
+    "correct_answer": "I"
+  },
+  {
+    "lessonName": "Pronouns and Their Usage",
+    "question": "I gave the gift to ____.",
+    "options": ["he", "him", "his", "they"],
+    "correct_answer": "him"
+  },
+  {
+    "lessonName": "Types of Sentences",
+    "question": "What type of sentence is this: 'What a beautiful day!'",
+    "options": ["Declarative", "Interrogative", "Exclamatory", "Imperative"],
+    "correct_answer": "Exclamatory"
+  },
+  {
+    "lessonName": "Types of Sentences",
+    "question": "'Please open the door.' is an example of a ____ sentence.",
+    "options": ["Declarative", "Imperative", "Interrogative", "Exclamatory"],
+    "correct_answer": "Imperative"
+  },
+  {
+    "lessonName": "Types of Sentences",
+    "question": "Which sentence is interrogative?",
+    "options": ["Close the window.", "Where are you going?", "He is late.", "How beautiful!"],
+    "correct_answer": "Where are you going?"
+  },
+  {
+    "lessonName": "Types of Sentences",
+    "question": "'He likes to read books.' is a ____ sentence.",
+    "options": ["Exclamatory", "Declarative", "Interrogative", "Imperative"],
+    "correct_answer": "Declarative"
+  },
+  {
+    "lessonName": "Types of Sentences",
+    "question": "Choose the exclamatory sentence:",
+    "options": ["She went to the store.", "Wow! That’s amazing!", "Can you help me?", "Open the window."],
+    "correct_answer": "Wow! That’s amazing!"
+  },
+{
+    "lessonName": "Simple Present Tense",
+    "question": "He ____ to school every day.",
+    "options": ["go", "goes", "went", "going"],
+    "correct_answer": "goes"
+  },
+  {
+    "lessonName": "Simple Present Tense",
+    "question": "I ____ coffee every morning.",
+    "options": ["drink", "drinks", "drank", "drinking"],
+    "correct_answer": "drink"
+  },
+  {
+    "lessonName": "Simple Present Tense",
+    "question": "We ____ in a small house.",
+    "options": ["live", "lives", "lived", "living"],
+    "correct_answer": "live"
+  },
+  {
+    "lessonName": "Simple Present Tense",
+    "question": "She always ____ late on Mondays.",
+    "options": ["arrive", "arrives", "arrived", "arriving"],
+    "correct_answer": "arrives"
+  },
+  {
+    "lessonName": "Simple Present Tense",
+    "question": "Cats ____ milk.",
+    "options": ["likes", "like", "liking", "liked"],
+    "correct_answer": "like"
+  },
+  {
+    "lessonName": "Negative and Interrogative Forms",
+    "question": "Which is the correct negative sentence?",
+    "options": ["He not likes apples.", "He don't like apples.", "He doesn't like apples.", "He isn't like apples."],
+    "correct_answer": "He doesn't like apples."
+  },
+  {
+    "lessonName": "Negative and Interrogative Forms",
+    "question": "Form the correct question: 'You play football.'",
+    "options": ["Do you play football?", "You do play football?", "Does you play football?", "Play you football?"],
+    "correct_answer": "Do you play football?"
+  },
+  {
+    "lessonName": "Negative and Interrogative Forms",
+    "question": "Choose the correct negative form: 'They eat meat.'",
+    "options": ["They doesn't eat meat.", "They not eat meat.", "They don't eat meat.", "They are not eat meat."],
+    "correct_answer": "They don't eat meat."
+  },
+  {
+    "lessonName": "Negative and Interrogative Forms",
+    "question": "Which is a correct interrogative sentence?",
+    "options": ["Does she likes chocolate?", "Do she like chocolate?", "Does she like chocolate?", "She does like chocolate?"],
+    "correct_answer": "Does she like chocolate?"
+  },
+  {
+    "lessonName": "Negative and Interrogative Forms",
+    "question": "Make this sentence negative: 'I go to the gym.'",
+    "options": ["I not go to the gym.", "I doesn't go to the gym.", "I don't go to the gym.", "I am not go to the gym."],
+    "correct_answer": "I don't go to the gym."
+  },
+    {
+      "lessonName": "Intro to Dialogue",
+      "question": "Which is the correct way to respond: 'How are you?'",
+      "options": ["I'm fine, thanks.", "How you are?", "I am good, and you?", "I'm fine thanks you."],
+      "correct_answer": "I'm fine, thanks."
+    },
+    {
+      "lessonName": "Intro to Dialogue",
+      "question": "Choose the correct question: '_____ your name?'",
+      "options": ["What is", "Where is", "How are", "Who are"],
+      "correct_answer": "What is"
+    },
+    {
+      "lessonName": "Intro to Dialogue",
+      "question": "What would you say when meeting someone for the first time?",
+      "options": ["Goodbye!", "What’s up?", "Nice to meet you!", "Go away!"],
+      "correct_answer": "Nice to meet you!"
+    },
+    {
+      "lessonName": "Intro to Dialogue",
+      "question": "Choose the appropriate answer: 'Where are you from?'",
+      "options": ["I from Canada.", "I am from Canada.", "I is from Canada.", "From Canada I am."],
+      "correct_answer": "I am from Canada."
+    },
+    {
+      "lessonName": "Intro to Dialogue",
+      "question": "What is a polite way to ask someone to repeat something?",
+      "options": ["Say again!", "Repeat it!", "Pardon me?", "What you said?"],
+      "correct_answer": "Pardon me?"
+    },
+  
+    {
+      "lessonName": "Everyday Q&A",
+      "question": "What do you say when you don’t understand something?",
+      "options": ["Again!", "I don’t understand.", "No speak!", "Talk more."],
+      "correct_answer": "I don’t understand."
+    },
+    {
+      "lessonName": "Everyday Q&A",
+      "question": "Complete the question: 'What ____ you do?'",
+      "options": ["do", "does", "are", "be"],
+      "correct_answer": "do"
+    },
+    {
+      "lessonName": "Everyday Q&A",
+      "question": "How do you ask for the time?",
+      "options": ["What time is it?", "Where is the time?", "Is it time?", "Time is what?"],
+      "correct_answer": "What time is it?"
+    },
+    {
+      "lessonName": "Everyday Q&A",
+      "question": "Choose the question asking for location:",
+      "options": ["How are you?", "What is your name?", "Where is the bank?", "When you go?"],
+      "correct_answer": "Where is the bank?"
+    },
+    {
+      "lessonName": "Everyday Q&A",
+      "question": "How do you ask about someone's age?",
+      "options": ["What age you have?", "How many years are you?", "How old are you?", "You are how years?"],
+      "correct_answer": "How old are you?"
+    },
+  
+    {
+      "lessonName": "Sentence Building",
+      "question": "Choose the correct word order: 'She / coffee / drinks / every morning'",
+      "options": ["She drinks coffee every morning", "Drinks coffee every morning she", "Coffee drinks she every morning", "She every morning drinks coffee"],
+      "correct_answer": "She drinks coffee every morning"
+    },
+    {
+      "lessonName": "Sentence Building",
+      "question": "Which sentence is grammatically correct?",
+      "options": ["They goes to school.", "She like pizza.", "We play soccer.", "He go home."],
+      "correct_answer": "We play soccer."
+    },
+    {
+      "lessonName": "Sentence Building",
+      "question": "Choose the correct verb: 'He ____ a doctor.'",
+      "options": ["are", "is", "am", "be"],
+      "correct_answer": "is"
+    },
+    {
+      "lessonName": "Sentence Building",
+      "question": "Find the correct sentence:",
+      "options": ["Books I read.", "I read books.", "Read I books.", "I books read."],
+      "correct_answer": "I read books."
+    },
+    {
+      "lessonName": "Sentence Building",
+      "question": "Complete the sentence: 'They ____ to the park every Sunday.'",
+      "options": ["go", "goes", "gone", "going"],
+      "correct_answer": "go"
+    },
+  
+    {
+      "lessonName": "Express Yourself",
+      "question": "Choose the sentence that shows emotion:",
+      "options": ["I eat dinner.", "The sky is blue.", "I am so happy!", "We go to school."],
+      "correct_answer": "I am so happy!"
+    },
+    {
+      "lessonName": "Express Yourself",
+      "question": "Which word expresses surprise?",
+      "options": ["Sure", "Maybe", "Wow", "Because"],
+      "correct_answer": "Wow"
+    },
+    {
+      "lessonName": "Express Yourself",
+      "question": "Which phrase shows excitement?",
+      "options": ["I guess.", "That’s amazing!", "It is fine.", "It’s okay."],
+      "correct_answer": "That’s amazing!"
+    },
+    {
+      "lessonName": "Express Yourself",
+      "question": "Which one is a way to show sadness?",
+      "options": ["Yay!", "Oh no!", "Wow!", "Cool!"],
+      "correct_answer": "Oh no!"
+    },
+    {
+      "lessonName": "Express Yourself",
+      "question": "What is a polite way to disagree?",
+      "options": ["You are wrong!", "No way!", "I don’t think so.", "You're dumb."],
+      "correct_answer": "I don’t think so."
+    },
+  
+    {
+      "lessonName": "Quick Reads",
+      "question": "Choose the main idea: 'Tom went to the store to buy milk.'",
+      "options": ["Tom likes milk.", "Tom went shopping.", "Tom went to the store.", "Tom is drinking milk."],
+      "correct_answer": "Tom went to the store."
+    },
+    {
+      "lessonName": "Quick Reads",
+      "question": "What comes first in a story?",
+      "options": ["Ending", "Middle", "Beginning", "Climax"],
+      "correct_answer": "Beginning"
+    },
+    {
+      "lessonName": "Quick Reads",
+      "question": "Which sentence is a fact?",
+      "options": ["I love pizza.", "Pizza is the best.", "Pizza is a food.", "Pizza makes me happy."],
+      "correct_answer": "Pizza is a food."
+    },
+    {
+      "lessonName": "Quick Reads",
+      "question": "Identify the action: 'The cat jumped on the table.'",
+      "options": ["cat", "jumped", "table", "on"],
+      "correct_answer": "jumped"
+    },
+    {
+      "lessonName": "Quick Reads",
+      "question": "What is the setting? 'They played in the park all day.'",
+      "options": ["park", "they", "played", "day"],
+      "correct_answer": "park"
+    },
+  
+    {
+      "lessonName": "Reading for Details",
+      "question": "What color was the car in the story?",
+      "options": ["red", "green", "blue", "black"],
+      "correct_answer": "blue"
+    },
+    {
+      "lessonName": "Reading for Details",
+      "question": "Who was the main character?",
+      "options": ["Sarah", "The dog", "The teacher", "The house"],
+      "correct_answer": "Sarah"
+    },
+    {
+      "lessonName": "Reading for Details",
+      "question": "When did the event happen?",
+      "options": ["In the morning", "Last week", "Yesterday", "At night"],
+      "correct_answer": "Yesterday"
+    },
+    {
+      "lessonName": "Reading for Details",
+      "question": "Why did he run away?",
+      "options": ["He was scared", "He saw food", "He was late", "He wanted to play"],
+      "correct_answer": "He was scared"
+    },
+    {
+      "lessonName": "Reading for Details",
+      "question": "What did she find under the bed?",
+      "options": ["A toy", "A book", "A cat", "A box"],
+      "correct_answer": "A toy"
+    },
+  
+    {
+      "lessonName": "Basic Listening",
+      "question": "What did the speaker say about the weather?",
+      "options": ["It's sunny", "It's raining", "It's cold", "It's windy"],
+      "correct_answer": "It's raining"
+    },
+    {
+      "lessonName": "Basic Listening",
+      "question": "Where is the speaker going?",
+      "options": ["To the market", "To school", "To work", "To the park"],
+      "correct_answer": "To the market"
+    },
+    {
+      "lessonName": "Basic Listening",
+      "question": "What did she want to buy?",
+      "options": ["Apples", "Oranges", "Bananas", "Grapes"],
+      "correct_answer": "Apples"
+    },
+    {
+      "lessonName": "Basic Listening",
+      "question": "How does the speaker feel?",
+      "options": ["Happy", "Angry", "Tired", "Excited"],
+      "correct_answer": "Tired"
+    },
+    {
+      "lessonName": "Basic Listening",
+      "question": "What time is the meeting?",
+      "options": ["9:00", "10:30", "2:00", "4:15"],
+      "correct_answer": "10:30"
+    },
+  
+    {
+      "lessonName": "Understanding Context",
+      "question": "What does the word 'bank' mean in: 'He walked by the bank of the river'?",
+      "options": ["A money place", "A river's edge", "A building", "A safe box"],
+      "correct_answer": "A river's edge"
+    },
+    {
+      "lessonName": "Understanding Context",
+      "question": "What does ‘bark’ mean in: 'The dog began to bark loudly'?",
+      "options": ["Tree skin", "Dog sound", "Shout", "Noise"],
+      "correct_answer": "Dog sound"
+    },
+    {
+      "lessonName": "Understanding Context",
+      "question": "Choose the correct meaning of 'bright' in: 'She wore a bright dress.'",
+      "options": ["Intelligent", "Loud", "Colorful", "Dim"],
+      "correct_answer": "Colorful"
+    },
+    {
+      "lessonName": "Understanding Context",
+      "question": "What does 'cold' mean in: 'He caught a cold'?",
+      "options": ["Low temperature", "An illness", "Frozen", "Sadness"],
+      "correct_answer": "An illness"
+    },
+    {
+      "lessonName": "Understanding Context",
+      "question": "What is the meaning of ‘light’ in: 'The box is light'?",
+      "options": ["Not heavy", "Bright", "Fire", "Lamp"],
+      "correct_answer": "Not heavy"
+    }  
+]

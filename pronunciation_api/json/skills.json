@@ -1,0 +1,22 @@
+ [
+    {
+        "skillName": "GrammarSkill",
+        "skillDesc": "Test your understanding of tenses, sentence structure, and rules. Improve accuracy in everyday writing."
+    },
+    {
+        "skillName": "ConversationSkill",
+        "skillDesc": "Practice real-life dialogue with useful phrases. Build confidence speaking in different situations."
+    },
+    {
+        "skillName": "ListeningSkill",
+        "skillDesc": "Enhance your ability to understand spoken English. Practice with realistic conversations and audio."
+    },
+    {
+        "skillName": "ReadingSkill",
+        "skillDesc": "Enhance your comprehension with short passages. Understand context, tone, and key details."
+    },
+    {
+        "skillName": "WritingSkill",
+        "skillDesc": "Sharpen your ability to express ideas clearly. Learn to organize thoughts with proper grammar."
+    }
+]

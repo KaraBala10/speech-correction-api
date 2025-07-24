@@ -157,3 +157,52 @@ class Level(models.Model):
         if self.audio_file:
             return self.audio_file.url
         return f"/media/{self.test_word}.wav"
+
+
+class Skill(models.Model):
+    """Skill model to replace skills.json"""
+
+    skill_name = models.CharField(max_length=100, unique=True)
+    skill_desc = models.TextField()
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["order", "skill_name"]
+
+    def __str__(self):
+        return self.skill_name
+
+
+class Quiz(models.Model):
+    """Quiz model to replace quizs.json"""
+
+    lesson_name = models.CharField(max_length=200)
+    question = models.TextField()
+    options = models.JSONField()  # Store as JSON array
+    correct_answer = models.CharField(max_length=200)
+    skill = models.ForeignKey(
+        Skill, on_delete=models.CASCADE, related_name="quizzes", null=True, blank=True
+    )
+    difficulty = models.CharField(
+        max_length=20,
+        choices=[
+            ("easy", "Easy"),
+            ("medium", "Medium"),
+            ("hard", "Hard"),
+        ],
+        default="easy",
+    )
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["lesson_name", "order"]
+        verbose_name_plural = "Quizzes"
+
+    def __str__(self):
+        return f"{self.lesson_name} - {self.question[:50]}..."

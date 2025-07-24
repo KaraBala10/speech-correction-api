@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-from .models import CustomUser, Language, Letter, Level, Profile
+from .models import CustomUser, Language, Letter, Level, Profile, Quiz, Skill
 
 
 class CustomUserAdmin(ImportExportModelAdmin):
@@ -170,9 +170,164 @@ class LevelAdmin(ImportExportModelAdmin):
     media_url_preview.short_description = "Audio Preview"
 
 
+class SkillResource(resources.ModelResource):
+    class Meta:
+        model = Skill
+        import_id_fields = ("skill_name",)
+        fields = ("skill_name", "skill_desc", "is_active", "order")
+
+
+class SkillAdmin(ImportExportModelAdmin):
+    resource_class = SkillResource
+    list_display = (
+        "skill_name",
+        "skill_desc_preview",
+        "is_active",
+        "order",
+        "created_at",
+    )
+    list_filter = ("is_active", "created_at")
+    search_fields = ("skill_name", "skill_desc")
+    list_editable = ("order", "is_active")
+    ordering = ("order", "skill_name")
+    readonly_fields = ("created_at", "updated_at")
+
+    fieldsets = (
+        ("Basic Information", {"fields": ("skill_name", "skill_desc")}),
+        ("Settings", {"fields": ("is_active", "order")}),
+        (
+            "Timestamps",
+            {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
+        ),
+    )
+
+    def skill_desc_preview(self, obj):
+        return (
+            obj.skill_desc[:100] + "..."
+            if len(obj.skill_desc) > 100
+            else obj.skill_desc
+        )
+
+    skill_desc_preview.short_description = "Description Preview"
+
+    actions = ["activate_skills", "deactivate_skills"]
+
+    def activate_skills(self, request, queryset):
+        updated = queryset.update(is_active=True)
+        self.message_user(request, f"{updated} skills activated.")
+
+    activate_skills.short_description = "Activate selected skills"
+
+    def deactivate_skills(self, request, queryset):
+        updated = queryset.update(is_active=False)
+        self.message_user(request, f"{updated} skills deactivated.")
+
+    deactivate_skills.short_description = "Deactivate selected skills"
+
+
+class QuizResource(resources.ModelResource):
+    class Meta:
+        model = Quiz
+        import_id_fields = ("lesson_name", "question")
+        fields = (
+            "lesson_name",
+            "question",
+            "options",
+            "correct_answer",
+            "skill",
+            "difficulty",
+            "is_active",
+            "order",
+        )
+
+
+class QuizAdmin(ImportExportModelAdmin):
+    resource_class = QuizResource
+    list_display = (
+        "lesson_name",
+        "question_preview",
+        "correct_answer",
+        "skill",
+        "difficulty",
+        "is_active",
+        "created_at",
+    )
+    list_filter = ("skill", "difficulty", "is_active", "lesson_name", "created_at")
+    search_fields = ("lesson_name", "question", "correct_answer")
+    list_editable = ("is_active", "difficulty")
+    ordering = ("lesson_name", "order")
+    readonly_fields = ("created_at", "updated_at", "options_preview")
+
+    fieldsets = (
+        ("Basic Information", {"fields": ("lesson_name", "question")}),
+        ("Quiz Content", {"fields": ("options", "correct_answer", "options_preview")}),
+        ("Settings", {"fields": ("skill", "difficulty", "is_active", "order")}),
+        (
+            "Timestamps",
+            {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
+        ),
+    )
+
+    def question_preview(self, obj):
+        return obj.question[:80] + "..." if len(obj.question) > 80 else obj.question
+
+    question_preview.short_description = "Question Preview"
+
+    def options_preview(self, obj):
+        if obj.options:
+            options_list = ", ".join([f'"{opt}"' for opt in obj.options])
+            return format_html(
+                '<div style="max-width: 300px; word-wrap: break-word;">{}</div>',
+                options_list,
+            )
+        return "No options"
+
+    options_preview.short_description = "Options Preview"
+
+    actions = [
+        "activate_quizzes",
+        "deactivate_quizzes",
+        "set_difficulty_easy",
+        "set_difficulty_medium",
+        "set_difficulty_hard",
+    ]
+
+    def activate_quizzes(self, request, queryset):
+        updated = queryset.update(is_active=True)
+        self.message_user(request, f"{updated} quizzes activated.")
+
+    activate_quizzes.short_description = "Activate selected quizzes"
+
+    def deactivate_quizzes(self, request, queryset):
+        updated = queryset.update(is_active=False)
+        self.message_user(request, f"{updated} quizzes deactivated.")
+
+    deactivate_quizzes.short_description = "Deactivate selected quizzes"
+
+    def set_difficulty_easy(self, request, queryset):
+        updated = queryset.update(difficulty="easy")
+        self.message_user(request, f"{updated} quizzes set to easy difficulty.")
+
+    set_difficulty_easy.short_description = "Set difficulty to Easy"
+
+    def set_difficulty_medium(self, request, queryset):
+        updated = queryset.update(difficulty="medium")
+        self.message_user(request, f"{updated} quizzes set to medium difficulty.")
+
+    set_difficulty_medium.short_description = "Set difficulty to Medium"
+
+    def set_difficulty_hard(self, request, queryset):
+        updated = queryset.update(difficulty="hard")
+        self.message_user(request, f"{updated} quizzes set to hard difficulty.")
+
+    set_difficulty_hard.short_description = "Set difficulty to Hard"
+
+
 # Register all models
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Letter, LetterAdmin)
 admin.site.register(Level, LevelAdmin)
+admin.site.register(Skill, SkillAdmin)
+admin.site.register(Quiz, QuizAdmin)

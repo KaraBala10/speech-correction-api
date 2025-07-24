@@ -28,4 +28,19 @@ urlpatterns = [
         views.get_levels_by_letter,
         name="get_levels_by_letter",
     ),
+    path("skills/", views.get_skills, name="get_skills"),
+    path("skills/<int:skill_id>/", views.get_skill_by_id, name="get_skill_by_id"),
+    path("quizzes/", views.get_quizzes, name="get_quizzes"),
+    path("quizzes/<int:quiz_id>/", views.get_quiz_by_id, name="get_quiz_by_id"),
+    path(
+        "skills/<int:skill_id>/quizzes/",
+        views.get_quizzes_by_skill,
+        name="get_quizzes_by_skill",
+    ),
+    path(
+        "quizzes/lesson/<str:lesson_name>/",
+        views.get_quizzes_by_lesson,
+        name="get_quizzes_by_lesson",
+    ),
+    path("quizzes/submit/", views.submit_quiz_answer, name="submit_quiz_answer"),
 ]
