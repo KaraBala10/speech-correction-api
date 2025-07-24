@@ -57,9 +57,7 @@ class Command(BaseCommand):
 
     def migrate_letters(self, lang_code, language):
         """Migrate letters from JSON to Django models"""
-        json_file = os.path.join(
-            settings.BASE_DIR, "pronunciation_api", "json", lang_code, "letters.json"
-        )
+        json_file = os.path.join(settings.BASE_DIR, "json", lang_code, "letters.json")
 
         if not os.path.exists(json_file):
             self.stdout.write(
@@ -107,9 +105,7 @@ class Command(BaseCommand):
 
     def migrate_levels(self, lang_code, language):
         """Migrate levels from JSON to Django models"""
-        json_file = os.path.join(
-            settings.BASE_DIR, "pronunciation_api", "json", lang_code, "levels.json"
-        )
+        json_file = os.path.join(settings.BASE_DIR, "json", lang_code, "levels.json")
 
         if not os.path.exists(json_file):
             self.stdout.write(
