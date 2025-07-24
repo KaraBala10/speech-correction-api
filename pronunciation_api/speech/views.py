@@ -1,14 +1,15 @@
 import imghdr
 import json
 import os
+
 # import tempfile
 from datetime import timedelta
 
 import redis
+
 # import whisper
 from django.conf import settings
-from django.contrib.auth import (authenticate, get_user_model,
-                                 update_session_auth_hash)
+from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash
 from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
@@ -19,13 +20,14 @@ from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import CustomUser, Profile
+from .models import CustomUser, Language, Letter, Level, Profile
 from .serializers import ProfileSerializer, UserSerializer
 from .tasks import send_verification_email
 
@@ -513,3 +515,83 @@ def transcribe(request):
         },
         status=200,
     )
+
+
+@require_http_methods(["GET"])
+def get_letters(request, language_code):
+    """Get letters for a specific language"""
+    language = get_object_or_404(Language, code=language_code, is_active=True)
+    letters = Letter.objects.filter(language=language, is_active=True).order_by("order")
+
+    data = []
+    for letter in letters:
+        data.append(
+            {
+                "id": letter.id,
+                "letter": letter.letter,
+                "word": letter.word,
+                "color": letter.color,
+                "boxColor": letter.box_color,
+                "wordImage": letter.word_image,
+                "media_url": letter.media_url,
+                "order": letter.order,
+                "created_at": letter.created_at.isoformat(),
+            }
+        )
+
+    return JsonResponse({"letters": data})
+
+
+@require_http_methods(["GET"])
+def get_levels(request, language_code):
+    """Get levels for a specific language"""
+    language = get_object_or_404(Language, code=language_code, is_active=True)
+    levels = Level.objects.filter(language=language, is_active=True).order_by(
+        "letter__order", "level_number"
+    )
+
+    data = []
+    for level in levels:
+        data.append(
+            {
+                "id": level.id,
+                "letter": level.letter.letter,
+                "level": str(level.level_number),
+                "test": level.test_word,
+                "wordImage": level.word_image,
+                "media_url": level.media_url,
+                "difficulty": level.difficulty,
+                "created_at": level.created_at.isoformat(),
+            }
+        )
+
+    return JsonResponse({"levels": data})
+
+
+@require_http_methods(["GET"])
+def get_levels_by_letter(request, language_code, letter):
+    """Get levels for a specific letter in a language"""
+    language = get_object_or_404(Language, code=language_code, is_active=True)
+    letter_obj = get_object_or_404(
+        Letter, language=language, letter=letter, is_active=True
+    )
+    levels = Level.objects.filter(letter=letter_obj, is_active=True).order_by(
+        "level_number"
+    )
+
+    data = []
+    for level in levels:
+        data.append(
+            {
+                "id": level.id,
+                "letter": level.letter.letter,
+                "level": str(level.level_number),
+                "test": level.test_word,
+                "wordImage": level.word_image,
+                "media_url": level.media_url,
+                "difficulty": level.difficulty,
+                "created_at": level.created_at.isoformat(),
+            }
+        )
+
+    return JsonResponse({"levels": data})

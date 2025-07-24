@@ -64,3 +64,96 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Language(models.Model):
+    """Language model to support multiple languages"""
+
+    LANGUAGE_CHOICES = [
+        ("ar", "Arabic"),
+        ("en", "English"),
+    ]
+
+    code = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, unique=True)
+    name = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["code"]
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
+
+class Letter(models.Model):
+    """Letter model to replace letters.json"""
+
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, related_name="letters"
+    )
+    letter = models.CharField(max_length=10)  # Support Arabic and English letters
+    word = models.CharField(max_length=100)
+    color = models.CharField(
+        max_length=50, default="bg-blue-300"
+    )  # Tailwind CSS classes
+    box_color = models.CharField(max_length=50, default="bg-blue-400")
+    word_image = models.URLField(max_length=500, blank=True, null=True)
+    audio_file = models.FileField(upload_to="letters/audio/", blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ["language", "letter"]
+        ordering = ["language", "order", "letter"]
+
+    def __str__(self):
+        return f"{self.language.code.upper()}: {self.letter} - {self.word}"
+
+    @property
+    def media_url(self):
+        """Generate media URL for audio file"""
+        if self.audio_file:
+            return self.audio_file.url
+        return f"/media/{self.word}.wav"
+
+
+class Level(models.Model):
+    """Level model to replace levels.json"""
+
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, related_name="levels"
+    )
+    letter = models.ForeignKey(Letter, on_delete=models.CASCADE, related_name="levels")
+    level_number = models.PositiveIntegerField()
+    test_word = models.CharField(max_length=100)
+    word_image = models.URLField(max_length=500, blank=True, null=True)
+    audio_file = models.FileField(upload_to="levels/audio/", blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+    difficulty = models.CharField(
+        max_length=20,
+        choices=[
+            ("easy", "Easy"),
+            ("medium", "Medium"),
+            ("hard", "Hard"),
+        ],
+        default="easy",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ["language", "letter", "level_number"]
+        ordering = ["language", "letter", "level_number"]
+
+    def __str__(self):
+        return f"{self.language.code.upper()}: {self.letter.letter} Level {self.level_number} - {self.test_word}"
+
+    @property
+    def media_url(self):
+        """Generate media URL for audio file"""
+        if self.audio_file:
+            return self.audio_file.url
+        return f"/media/{self.test_word}.wav"

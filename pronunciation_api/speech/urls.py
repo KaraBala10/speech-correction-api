@@ -1,43 +1,31 @@
 from django.urls import path
 
-from .views import (
-    LoginView,
-    LogoutView,
-    PasswordResetConfirmView,
-    PasswordResetView,
-    PublicUserProfileView,
-    RegisterView,
-    UpdateProfileView,
-    UserProfileView,
-    VerifyEmailView,
-    ar_letters,
-    ar_levels,
-    en_letters,
-    en_levels,
-    transcribe,
-)
+from . import views
 
 urlpatterns = [
-    path("signup/", RegisterView.as_view(), name="signup"),
-    path("verify-email/", VerifyEmailView.as_view(), name="verify-email"),
-    path("login/", LoginView.as_view(), name="login"),
-    path("logout/", LogoutView.as_view(), name="logout"),
-    path("profile/", UserProfileView.as_view(), name="user-profile"),
-    path("profile/update/", UpdateProfileView.as_view(), name="update-profile"),
-    path("password-reset/", PasswordResetView.as_view(), name="password_reset"),
+    path("signup/", views.RegisterView.as_view(), name="signup"),
+    path("verify-email/", views.VerifyEmailView.as_view(), name="verify-email"),
+    path("login/", views.LoginView.as_view(), name="login"),
+    path("logout/", views.LogoutView.as_view(), name="logout"),
+    path("profile/", views.UserProfileView.as_view(), name="user-profile"),
+    path("profile/update/", views.UpdateProfileView.as_view(), name="update-profile"),
+    path("password-reset/", views.PasswordResetView.as_view(), name="password_reset"),
     path(
         "password-reset/confirm/<uidb64>/<token>/",
-        PasswordResetConfirmView.as_view(),
+        views.PasswordResetConfirmView.as_view(),
         name="password_reset_confirm",
     ),
     path(
         "profile/<str:username>/",
-        PublicUserProfileView.as_view(),
+        views.PublicUserProfileView.as_view(),
         name="public-profile",
     ),
-    path("ar/letters/", ar_letters, name="ar-letters"),
-    path("ar/levels/", ar_levels, name="ar-levels"),
-    path("en/letters/", en_letters, name="en-letters"),
-    path("en/levels/", en_levels, name="en-levels"),
-    path("transcribe/", transcribe, name="transcribe"),
+    path("transcribe/", views.transcribe, name="transcribe"),
+    path("<str:language_code>/letters/", views.get_letters, name="get_letters"),
+    path("<str:language_code>/levels/", views.get_levels, name="get_levels"),
+    path(
+        "<str:language_code>/levels/<str:letter>/",
+        views.get_levels_by_letter,
+        name="get_levels_by_letter",
+    ),
 ]
