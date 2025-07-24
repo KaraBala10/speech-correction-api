@@ -3,3 +3,4 @@ migrations
 .env
 *.pt
 staticfiles
+profile_pictures

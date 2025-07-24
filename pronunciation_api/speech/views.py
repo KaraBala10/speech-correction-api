@@ -276,10 +276,9 @@ class UpdateProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def put(self, request):
-        profile = request.user.profile
+        profile, _ = Profile.objects.get_or_create(user=request.user)
         profile.bio = request.data.get("bio", profile.bio)
         profile.country = request.data.get("country", profile.country)
-        profile.governorate = request.data.get("governorate", profile.governorate)
 
         if "profile_picture" in request.FILES:
             image_file = request.FILES["profile_picture"]
