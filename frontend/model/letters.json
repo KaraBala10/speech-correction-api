@@ -1,0 +1,186 @@
+{
+    "letters" : [
+        {
+          "letter": "A",
+          "word": "Apple",
+          "color": "bg-red-300",
+          "boxColor":"bg-red-400",
+          "wordImage": "https://static.vecteezy.com/system/resources/thumbnails/026/912/021/small/red-apple-generative-ai-png.png"
+        },
+        {
+          "letter": "B",
+          "word": "Ball",
+          "color": "bg-yellow-200",
+          "boxColor":"bg-yellow-300",
+          "wordImage": "https://pngtree.com/so/cartoon-ball"
+        },
+        {
+          "letter": "C",
+          "word": "Cat",
+          "color": "bg-green-200",
+          "boxColor":"bg-green-300",
+          "wordImage": "https://pngtree.com/free-png-vectors/cartoon-cat"
+        },
+        {
+          "letter": "D",
+          "word": "Dog",
+          "color": "bg-blue-200",
+          "boxColor":"bg-blue-400",
+          "wordImage": "https://pngtree.com/so/cartoon-dog"
+        },
+        {
+          "letter": "E",
+          "word": "Elephant",
+          "color": "bg-purple-300",
+          "boxColor":"bg-purple-400",
+          "wordImage": "https://pngtree.com/so/cartoon-elephant"
+        },
+        {
+          "letter": "F",
+          "word": "Fish",
+          "color": "bg-pink-300",
+          "boxColor":"bg-pink-400",
+          "wordImage": "https://pngtree.com/so/cartoon-fish"
+        },
+        {
+          "letter": "G",
+          "word": "Giraffe",
+          "color": "bg-indigo-300",
+          "boxColor":"bg-indigo-400",
+          "wordImage": "https://www.vecteezy.com/free-png/giraffe"
+        },
+        {
+          "letter": "H",
+          "word": "Hat",
+          "color": "bg-red-300",
+          "boxColor":"bg-red-400",
+          "wordImage": "https://pngtree.com/so/cartoon-hat"
+        },
+        {
+          "letter": "I",
+          "word": "Ice cream",
+          "color": "bg-teal-300",
+          "boxColor":"bg-teal-400",
+          "wordImage": "https://pngtree.com/so/ice-cream-cartoon"
+        },
+        {
+          "letter": "J",
+          "word": "Juice",
+          "color": "bg-lime-300",
+          "boxColor":"bg-lime-400",
+          "wordImage": "https://pngtree.com/free-png-vectors/cartoon-juice"
+        },
+        {
+          "letter": "K",
+          "word": "Kite",
+          "color": "bg-cyan-300",
+          "boxColor":"bg-cyan-400",
+          "wordImage": "https://pngtree.com/so/kite"
+        },
+        {
+          "letter": "L",
+          "word": "Lion",
+          "color": "bg-rose-300",
+          "boxColor":"bg-rose-400",
+          "wordImage": "https://www.vecteezy.com/free-png/cartoon-lion"
+        },
+        {
+          "letter": "M",
+          "word": "Monkey",
+          "color": "bg-orange-300",
+          "boxColor":"bg-orange-400",
+          "wordImage": "https://pngtree.com/so/cartoon-monkey"
+        },
+        {
+          "letter": "N",
+          "word": "Nest",
+          "color": "bg-fuchsia-300",
+          "boxColor":"bg-fuchsia-400",
+          "wordImage": "https://pngtree.com/so/cartoon-nest"
+        },
+        {
+          "letter": "O",
+          "word": "Octopus",
+          "color": "bg-green-300",
+          "boxColor":"bg-green-400",
+          "wordImage": "https://pngtree.com/so/cartoon-octopus"
+        },
+        {
+          "letter": "P",
+          "word": "Pencil",
+          "color": "bg-red-200",
+          "boxColor":"bg-red-300",
+          "wordImage": "https://pngtree.com/so/cartoon-pencil"
+        },
+        {
+          "letter": "Q",
+          "word": "Queen",
+          "color": "bg-blue-200",
+          "boxColor":"bg-blue-300",
+          "wordImage": "https://pngtree.com/so/cartoon-queen"
+        },
+        {
+          "letter": "R",
+          "word": "Rainbow",
+          "color": "bg-yellow-200",
+          "boxColor":"bg-yellow-300",
+          "wordImage": "https://pngtree.com/so/cartoon-rainbow"
+        },
+        {
+          "letter": "S",
+          "word": "Sun",
+          "color": "bg-orange-200",
+          "boxColor":"bg-orange-300",
+          "wordImage": "https://pngtree.com/so/cartoon-sun"
+        },
+        {
+          "letter": "T",
+          "word": "Tiger",
+          "color": "bg-green-200",
+          "boxColor":"bg-green-300",
+          "wordImage": "https://pngtree.com/so/cartoon-tiger"
+        },
+        {
+          "letter": "U",
+          "word": "Umbrella",
+          "color": "bg-cyan-300",
+          "boxColor":"bg-cyan-400",
+          "wordImage": "https://pngtree.com/so/cartoon-umbrella"
+        },
+        {
+          "letter": "V",
+          "word": "Violin",
+          "color": "bg-purple-300",
+          "boxColor":"bg-purple-400",
+          "wordImage": "https://pngtree.com/so/cartoon-violin"
+        },
+        {
+          "letter": "W",
+          "word": "Whale",
+          "color": "bg-indigo-200",
+          "boxColor":"bg-indigo-300",
+          "wordImage": "https://pngtree.com/so/cartoon-whale"
+        },
+        {
+          "letter": "X",
+          "word": "Xenon",
+          "color": "bg-pink-200",
+          "boxColor":"bg-pink-300",
+          "wordImage": "https://pngtree.com/so/cartoon-xylophone"
+        },
+        {
+          "letter": "Y",
+          "word": "Yogurt",
+          "color": "bg-lime-200",
+          "boxColor":"bg-lime-300",
+          "wordImage": "https://pngtree.com/so/cartoon-yogurt"
+        },
+        {
+          "letter": "Z",
+          "word": "Zebra",
+          "color": "bg-rose-200",
+          "boxColor":"bg-rose-300",
+          "wordImage": "https://pngtree.com/so/cartoon-zebra"
+        }
+      ]
+}

@@ -1,0 +1,80 @@
+ [
+    {
+        "lessonCateg":"GrammarSkill",
+        "lessonName": "Pronouns and Their Usage",
+        "lessonDesc": "Master how to choose the correct pronoun depending on the context of a sentence.",
+        "lessonPassed":false
+    },
+    {
+        "lessonCateg":"GrammarSkill",
+        "lessonName": "Types of Sentences",
+        "lessonDesc": "Identify whether a sentence is declarative, interrogative, imperative, or exclamatory.",
+        "lessonPassed":false
+    },
+    {
+        "lessonCateg":"GrammarSkill",
+        "lessonName": "Simple Present Tense",
+        "lessonDesc": "Learn how to correctly use verbs in the simple present tense.",
+        "lessonPassed":false
+    },
+    {
+        "lessonCateg":"GrammarSkill",
+        "lessonName": "Negative and Interrogative Forms",
+        "lessonDesc": "Practice forming grammatically accurate negative and question sentences.",
+        "lessonPassed":false
+    },
+    {
+        "lessonCateg": "ConversationSkill",
+        "lessonName": "Intro to Dialogue",
+        "lessonDesc": "Learn how to start simple conversations and ask polite questions.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ConversationSkill",
+        "lessonName": "Everyday Talk",
+        "lessonDesc": "Practice using common phrases in daily interactions and making small talk.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ConversationSkill",
+        "lessonName": "Express Yourself",
+        "lessonDesc": "Form clear and grammatically correct questions and negative sentences.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "WritingSkill",
+        "lessonName": "Sentence Building",
+        "lessonDesc": "Practice writing accurate statements using proper grammar and punctuation.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "WritingSkill",
+        "lessonName": "Paragraph Practice",
+        "lessonDesc": "Organize your ideas into meaningful short paragraphs with clarity.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ReadingSkill",
+        "lessonName": "Quick Reads",
+        "lessonDesc": "Improve reading fluency by exploring short and engaging texts.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ReadingSkill",
+        "lessonName": "Understanding Context",
+        "lessonDesc": "Enhance comprehension by identifying meaning through sentence context.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ListeningSkill",
+        "lessonName": "Basic Listening",
+        "lessonDesc": "Practice understanding key words and phrases in short audio clips.",
+        "lessonPassed": false
+      },
+      {
+        "lessonCateg": "ListeningSkill",
+        "lessonName": "Active Listening",
+        "lessonDesc": "Focus on recognizing questions, tone, and meaning in conversation.",
+        "lessonPassed": false
+      }
+]
