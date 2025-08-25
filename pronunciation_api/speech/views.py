@@ -1,13 +1,13 @@
 import imghdr
 import json
+import mimetypes
 import os
-
-# import tempfile
+import subprocess
+import tempfile
 from datetime import timedelta
 
 import redis
-
-# import whisper
+import whisper
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, update_session_auth_hash
 from django.contrib.auth.tokens import default_token_generator
@@ -415,43 +415,20 @@ def en_levels(request):
 
 # ai
 
-# MODEL_DIR = "models"
-# MODEL_SIZE = "tiny"
+MODEL_DIR = "models"
+MODEL_SIZE = "tiny"
 
-# if not os.path.exists(MODEL_DIR):
-#     os.makedirs(MODEL_DIR)
+if not os.path.exists(MODEL_DIR):
+    os.makedirs(MODEL_DIR)
 
-# _model = None
-
-
-# def get_model():
-#     global _model
-#     if _model is None:
-#         _model = whisper.load_model(MODEL_SIZE, download_root=MODEL_DIR)
-#     return _model
+_model = None
 
 
-# @csrf_exempt
-# def transcribe(request):
-#     if request.method != "POST":
-#         return JsonResponse({"error": "Invalid method"}, status=405)
-
-#     if "audio" not in request.FILES:
-#         return JsonResponse({"error": "No audio file provided"}, status=400)
-
-#     audio_file = request.FILES["audio"]
-
-#     with tempfile.NamedTemporaryFile(suffix=".wav", delete=True) as temp:
-#         for chunk in audio_file.chunks():
-#             temp.write(chunk)
-#         temp.flush()
-#         try:
-#             model = get_model()
-#             result = model.transcribe(temp.name, language="ar", fp16=False)
-#         except Exception as e:
-#             return JsonResponse({"error": str(e)}, status=500)
-
-#     return JsonResponse({"text": result["text"]}, status=200)
+def get_model():
+    global _model
+    if _model is None:
+        _model = whisper.load_model(MODEL_SIZE, download_root=MODEL_DIR)
+    return _model
 
 
 @csrf_exempt
@@ -462,8 +439,51 @@ def transcribe(request):
     if "audio" not in request.FILES:
         return JsonResponse({"error": "No audio file provided"}, status=400)
 
-    _ = request.FILES.get("audio")
+    audio_file = request.FILES.get("audio")
 
+    # Get extension from filename or fallback from MIME type
+    ext = os.path.splitext(audio_file.name)[-1]
+    if not ext:
+        ext = mimetypes.guess_extension(audio_file.content_type) or ".ogg"
+
+    with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as temp_in:
+        for chunk in audio_file.chunks():
+            temp_in.write(chunk)
+        temp_in.flush()
+
+    fixed_wav = tempfile.NamedTemporaryFile(suffix=".wav", delete=False).name
+    try:
+        proc = subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-i",
+                temp_in.name,
+                "-ar",
+                "16000",
+                "-ac",
+                "1",
+                "-c:a",
+                "pcm_s16le",
+                fixed_wav,
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if proc.returncode != 0:
+            return JsonResponse({"error": f"ffmpeg failed: {proc.stderr}"}, status=500)
+
+        model = get_model()
+        result = model.transcribe(fixed_wav, language="ar", fp16=False)
+        reference = result["text"]
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+    finally:
+        os.remove(temp_in.name)
+        os.remove(fixed_wav)
+
+    # Get target word and character
     if request.content_type == "application/json":
         try:
             data = json.loads(request.body)
@@ -480,7 +500,7 @@ def transcribe(request):
     if not target_char or len(target_char) != 1:
         return JsonResponse({"error": "target_char must be one character"}, status=400)
 
-    reference = "تفاخة"  # this is the learner's pronunciation
+    # Comparison logic
     matches = sum(1 for a, b in zip(reference, target_word) if a == b)
     max_len = max(len(reference), len(target_word))
     percentage = (matches / max_len) * 100 if max_len > 0 else 0

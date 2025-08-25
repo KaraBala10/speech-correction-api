@@ -4,3 +4,4 @@ migrations
 *.pt
 staticfiles
 profile_pictures
+arabic_voice.wav

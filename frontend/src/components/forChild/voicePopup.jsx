@@ -143,32 +143,36 @@ export default function VoicePopup({
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
+
+      const mimeType = MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
+        ? "audio/webm;codecs=opus"
+        : "audio/ogg;codecs=opus";
+
+      const recorder = new MediaRecorder(stream, { mimeType });
       setAudioChunks([]);
+
       recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
+        if (e.data && e.data.size > 0) {
           setAudioChunks((prev) => [...prev, e.data]);
         }
       };
-      recorder.start();
-      setIsListening(true);
-      setMediaRecorder(recorder);
-      setLocalResult(null); // إعادة تعيين النتيجة السابقة عند بدء تسجيل جديد
-    } catch (err) {
-      console.error("فشل الوصول للمايكروفون:", err);
-      // يمكنك هنا عرض رسالة خطأ للمستخدم داخل البوب آب إذا أردت
-    }
-  };
 
-  const stopRecording = () => {
-    if (mediaRecorder && mediaRecorder.state === "recording") {
-      mediaRecorder.onstop = async () => {
+      recorder.onstop = async () => {
         setIsListening(false);
-        const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+
+        // إذا ما فيه أي بيانات، لا ترسل للباك إند
+        if (audioChunks.length === 0) {
+          console.warn("⚠️ لم يتم تسجيل أي صوت، تجاهل الإرسال.");
+          setLocalResult({ error: "🎤 لم يتم تسجيل صوت." });
+          return;
+        }
+
+        const audioBlob = new Blob(audioChunks, { type: mimeType });
+        const ext = mimeType.includes("webm") ? "webm" : "ogg";
         const formData = new FormData();
-        formData.append("audio", audioBlob, "recorded_audio.webm");
-        formData.append("target_word", targetWord); // استخدام الـ prop
-        formData.append("target_char", targetLetter); // استخدام الـ prop
+        formData.append("audio", audioBlob, `recorded_audio.${ext}`);
+        formData.append("target_word", targetWord);
+        formData.append("target_char", targetLetter);
 
         try {
           setIsProcessing(true);
@@ -180,33 +184,33 @@ export default function VoicePopup({
             }
           );
           const data = await response.json();
+          setLocalResult(data);
 
-          setLocalResult(data); // عرض النتيجة داخل البوب آب فوراً
-
-          // تشغيل الصوت بناءً على النتيجة
-          const audio = new Audio(data.test_passed ? goodSound : failSound);
-          audio
-            .play()
-            .catch((err) => console.warn("فشل تشغيل الصوت في البوب اب:", err));
-
-          // Remove auto-close functionality - let user close manually
-          // if (data.test_passed && onResult) {
-          //   setTimeout(() => {
-          //     onResult(data); // إرسال النتيجة لـ LevelPage
-          //     if (onClose) onClose(); // إغلاق البوب آب
-          //   }, 2000); // إغلاق تلقائي بعد ثانيتين مثلاً
-          // }
+          // تشغيل صوت النجاح أو الفشل
+          const feedback = new Audio(data.test_passed ? goodSound : failSound);
+          feedback.play().catch(() => {});
         } catch (err) {
           console.error("❌ فشل إرسال الصوت:", err);
-          setLocalResult({ error: "فشل في معالجة الصوت" }); // عرض خطأ في البوب آب
+          setLocalResult({ error: "فشل في معالجة الصوت" });
         } finally {
           setIsProcessing(false);
         }
       };
-      mediaRecorder.stop();
+
+      recorder.start();
+      setIsListening(true);
+      setMediaRecorder(recorder);
+    } catch (err) {
+      console.error("فشل الوصول للمايكروفون:", err);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      mediaRecorder.stop(); // فقط نوقف، onstop سيهتم بالباقي
     } else {
       setIsListening(false);
-      console.log("⚠️ ما في تسجيل نشط ليتوقف.");
+      console.log("⚠️ لا يوجد تسجيل نشط للتوقف.");
     }
   };
 

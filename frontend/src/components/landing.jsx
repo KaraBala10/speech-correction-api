@@ -159,7 +159,7 @@ export default function Landing() {
               </Link>
 
               {/* Explore Section */}
-              <Link to={`/explore/${token}`} className="group">
+              <Link to={`http://localhost:5554/`} className="group">
                 <div className="card-gradient p-8 text-center h-full hover-lift border border-neon-green/20 backdrop-blur-md">
                   <div className="relative mb-6">
                     <img
