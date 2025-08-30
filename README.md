@@ -64,10 +64,7 @@
 - **الخادم**: Ubuntu Server 20.04 LTS
 - **قاعدة البيانات**: MySQL 8.0 مع InnoDB Engine
 - **التخزين المؤقت**: Redis 6.0+
-- **الويب سيرفر**: Nginx مع Gunicorn
 - **SSL/TLS**: Let's Encrypt
-- **المراقبة**: Prometheus + Grafana
-- **النسخ الاحتياطية**: Automated Backups
 
 ## تسلسل الأحداث ومسار المستخدم (User Journey)
 
