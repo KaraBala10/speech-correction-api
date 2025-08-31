@@ -164,6 +164,13 @@ export default function Navbar() {
             Contact Us
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-neon group-hover:w-full transition-all duration-300"></span>
           </Link>
+          <Link
+            to={`/support`}
+            className="relative group hover:text-neon-blue transition-all duration-300"
+          >
+            AI Support
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-neon group-hover:w-full transition-all duration-300"></span>
+          </Link>
         </div>
 
         {/* Right Side - Auth or Profile Dropdown */}
