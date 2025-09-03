@@ -45,7 +45,9 @@ export default function Register() {
       })
       .then((data) => {
         console.log(data);
-        navigate("/VerifyCode");
+        localStorage.setItem("email", email);
+        localStorage.setItem("username", username);
+        navigate("/VerifyCode", { state: { email, username } });
       })
       .catch((err) => {
         console.error(err);

@@ -85,7 +85,7 @@ class RegisterView(APIView):
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                     )
                 # Send verification email for updated account.
-                send_verification_email.delay(email, verification_code)
+                send_verification_email.run(email, verification_code)
                 return Response(
                     {
                         "message": "Registration successful. Please check your email for verification."
@@ -113,7 +113,7 @@ class RegisterView(APIView):
                     {"error": "An error occurred while creating the account."},
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
-            send_verification_email.delay(email, verification_code)
+            send_verification_email.run(email, verification_code)
             return Response(
                 {
                     "message": "Registration successful. Please check your email for verification."
@@ -150,7 +150,7 @@ class VerifyEmailView(APIView):
             if user:
                 user.verification_code = new_verification_code
                 user.save()
-                send_verification_email.delay(email, verification_code)
+                send_verification_email.run(email, verification_code)
             time_left = timedelta(seconds=int(r.ttl(attempt_key)))
             return Response(
                 {
@@ -416,7 +416,7 @@ def en_levels(request):
 # ai
 
 MODEL_DIR = "models"
-MODEL_SIZE = "tiny"
+MODEL_SIZE = "small"
 
 if not os.path.exists(MODEL_DIR):
     os.makedirs(MODEL_DIR)
