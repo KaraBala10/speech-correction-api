@@ -149,25 +149,37 @@ export default function VoicePopup({
         : "audio/ogg;codecs=opus";
 
       const recorder = new MediaRecorder(stream, { mimeType });
-      setAudioChunks([]);
+
+      // local array to avoid stale-state closure inside event handlers
+      const chunks = [];
 
       recorder.ondataavailable = (e) => {
         if (e.data && e.data.size > 0) {
-          setAudioChunks((prev) => [...prev, e.data]);
+          chunks.push(e.data); // use local array
+          setAudioChunks((prev) => [...prev, e.data]); // keep state for UI if needed
         }
       };
 
       recorder.onstop = async () => {
         setIsListening(false);
 
-        // إذا ما فيه أي بيانات، لا ترسل للباك إند
-        if (audioChunks.length === 0) {
+        // stop WaveSurfer microphone if running (best-effort)
+        try {
+          if (wavesurfer.current && wavesurfer.current.microphone) {
+            wavesurfer.current.microphone.stop();
+          }
+        } catch (e) {
+          console.warn("خطأ أثناء إيقاف WaveSurfer ميكروفون:", e);
+        }
+
+        // use local chunks (not React state) — avoids the "no audio" on first try
+        if (chunks.length === 0) {
           console.warn("⚠️ لم يتم تسجيل أي صوت، تجاهل الإرسال.");
           setLocalResult({ error: "🎤 لم يتم تسجيل صوت." });
           return;
         }
 
-        const audioBlob = new Blob(audioChunks, { type: mimeType });
+        const audioBlob = new Blob(chunks, { type: mimeType });
         const ext = mimeType.includes("webm") ? "webm" : "ogg";
         const formData = new FormData();
         formData.append("audio", audioBlob, `recorded_audio.${ext}`);
@@ -186,7 +198,6 @@ export default function VoicePopup({
           const data = await response.json();
           setLocalResult(data);
 
-          // تشغيل صوت النجاح أو الفشل
           const feedback = new Audio(data.test_passed ? goodSound : failSound);
           feedback.play().catch(() => {});
         } catch (err) {
@@ -197,9 +208,11 @@ export default function VoicePopup({
         }
       };
 
+      // start and save recorder
       recorder.start();
       setIsListening(true);
       setMediaRecorder(recorder);
+      setAudioChunks([]); // reset UI state
     } catch (err) {
       console.error("فشل الوصول للمايكروفون:", err);
     }
