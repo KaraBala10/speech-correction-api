@@ -318,35 +318,6 @@ export default function Support() {
                 </div>
               </div>
 
-              {/* Features */}
-              <div
-                className="card-gradient p-6 animate-fade-in-right"
-                style={{ animationDelay: "200ms" }}
-              >
-                <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-neon-green" />
-                  ميزات سيار
-                </h3>
-                <div className="space-y-3 text-sm text-cyber-300">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-neon-blue rounded-full"></div>
-                    تحليل النطق بالذكاء الاصطناعي
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-neon-green rounded-full"></div>
-                    تمارين تفاعلية مخصصة
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-neon-purple rounded-full"></div>
-                    تتبع التقدم في الوقت الفعلي
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-neon-pink rounded-full"></div>
-                    دعم متعدد اللغات
-                  </div>
-                </div>
-              </div>
-
               {/* Tips */}
               <div
                 className="card-gradient p-6 animate-fade-in-right"
