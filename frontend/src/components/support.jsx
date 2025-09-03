@@ -27,11 +27,12 @@ export default function Support() {
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const inputRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = messagesContainerRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function Support() {
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage(e);
@@ -172,7 +173,7 @@ export default function Support() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Chat Interface */}
             <div className="lg:col-span-3">
-              <div className="card-gradient h-[600px] flex flex-col animate-fade-in-left">
+              <div className="card-gradient h-[calc(100vh-14rem)] min-h-[500px] flex flex-col animate-fade-in-left">
                 {/* Chat Header */}
                 <div className="p-6 border-b border-cyber-600">
                   <div className="flex items-center justify-between">
@@ -191,7 +192,7 @@ export default function Support() {
                     </div>
                     <button
                       onClick={clearChat}
-                      className="text-cyber-400 hover:text-neon-red transition-colors duration-300"
+                      className="text-cyber-400 hover:text-neon-red transition-colors duration-300 cursor-pointer"
                       title="مسح المحادثة"
                     >
                       مسح المحادثة
@@ -200,7 +201,10 @@ export default function Support() {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                <div
+                  ref={messagesContainerRef}
+                  className="flex-1 overflow-y-auto p-6 space-y-4"
+                >
                   {messages.map((message) => (
                     <div
                       key={message.id}
@@ -260,8 +264,6 @@ export default function Support() {
                       </div>
                     </div>
                   )}
-
-                  <div ref={messagesEndRef} />
                 </div>
 
                 {/* Input */}
@@ -272,24 +274,17 @@ export default function Support() {
                         ref={inputRef}
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyDown}
                         placeholder="اكتب رسالتك هنا..."
                         className="input-enhanced resize-none h-12 py-3 pr-12"
                         rows="1"
                         disabled={isLoading}
                       />
-                      <button
-                        type="button"
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-cyber-400 hover:text-neon-purple transition-colors duration-300"
-                        title="التسجيل الصوتي"
-                      >
-                        <Mic className="w-4 h-4" />
-                      </button>
                     </div>
                     <button
                       type="submit"
                       disabled={!inputMessage.trim() || isLoading}
-                      className="btn-primary px-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="btn-primary px-6 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isLoading ? (
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -315,7 +310,7 @@ export default function Support() {
                     <button
                       key={index}
                       onClick={() => handleSuggestedQuestion(question)}
-                      className="w-full text-right p-3 bg-cyber-800/50 hover:bg-cyber-700/50 border border-cyber-600 hover:border-neon-blue/50 rounded-lg transition-all duration-300 text-sm text-cyber-200 hover:text-white"
+                      className="w-full text-right p-3 bg-cyber-800/50 hover:bg-cyber-700/50 border border-cyber-600 hover:border-neon-blue/50 rounded-lg transition-all duration-300 text-sm text-cyber-200 hover:text-white cursor-pointer"
                     >
                       {question}
                     </button>
