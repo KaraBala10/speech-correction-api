@@ -5,3 +5,4 @@ migrations
 staticfiles
 profile_pictures
 arabic_voice.wav
+*.log
