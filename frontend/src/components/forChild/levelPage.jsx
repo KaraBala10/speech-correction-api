@@ -149,14 +149,16 @@ export default function LevelPage() {
   }, [lan, letter, level]);
 
   useEffect(() => {
-    if (audioRef.current && currentLevel.media_url) {
-      // Check if media_url exists
-      audioRef.current.src = `http://localhost:9999${currentLevel.media_url}`;
-      // Optional: Auto-play on load or level change
-      // audioRef.current.play().catch(err => console.log("Autoplay prevented:", err));
-      // audioRef.current.onended = () => setIsPlaying(false);
-    }
-  }, [currentLevel]); // Depend on currentLevel to update src
+    if (!audioRef.current) return;
+    const baseUrl = "http://localhost:9999"; // عدّل إذا كان سيرفرك على بورت/دومين مختلف
+    const src = currentLevel.media_url
+      ? `${baseUrl}${currentLevel.media_url}`
+      : `${baseUrl}/media/${lan}_${currentLevel.letter || letter}_${
+          currentLevel.level || level
+        }.wav`; // fallback لبناء اسم الملف من المسار
+    audioRef.current.src = src;
+  }, [currentLevel, lan, letter, level]);
+  // Depend on currentLevel to update src
 
   useEffect(() => {
     if (result) {
@@ -344,12 +346,7 @@ export default function LevelPage() {
                   <div className="absolute inset-0 bg-gradient-neon rounded-2xl opacity-10 animate-pulse"></div>
                 </div>
                 <div className="flex items-center space-x-6">
-                  <audio
-                    className="hidden"
-                    ref={audioRef}
-                    src={`http://localhost:9999${currentLevel.media_url}`}
-                    controls
-                  />
+                  <audio className="hidden" ref={audioRef} controls />
                   <button
                     onClick={handlePlay}
                     className="w-16 h-16 bg-gradient-neon hover:bg-neon-blue rounded-full shadow-neon-blue hover:shadow-neon-blue/50 transition-all duration-300 flex items-center justify-center group neon-glow"
