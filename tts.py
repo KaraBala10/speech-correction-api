@@ -6,6 +6,8 @@ https://github.com/nipponjo/tts_arabic/tree/main
 https://github.com/nipponjo/tts-arabic-pytorch
 """
 
+import unicodedata
+
 import torch
 from TTS.api import TTS
 from TTS.config.shared_configs import BaseDatasetConfig
@@ -20,12 +22,19 @@ torch.serialization.add_safe_globals(
 # Load model
 model_name = "tts_models/multilingual/multi-dataset/xtts_v2"
 tts = TTS(model_name)
-text = "مسمار"
+text = "ثَعْلَبْ"
 
+
+def remove_diacritics(s):
+    normalized = unicodedata.normalize("NFKD", s)
+    return "".join(ch for ch in normalized if unicodedata.category(ch) != "Mn")
+
+
+file_name = remove_diacritics(text)
 # Generate Arabic speech using your voice sample
 tts.tts_to_file(
     text=text,
     speaker_wav="arabic_voice.wav",
     language="ar",
-    file_path=f"./pronunciation_api/media/{text}.wav",
+    file_path=f"./pronunciation_api/media/{file_name}.wav",
 )
