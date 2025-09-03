@@ -92,7 +92,7 @@ export default function Contact() {
                     <div>
                       <h3 className="text-white font-semibold mb-1">Phone</h3>
                       <p className="text-cyber-300 group-hover:text-neon-green transition-colors duration-300">
-                        +1 (555) 123-4567
+                        +963 949 257 963
                       </p>
                       <p className="text-cyber-400 text-sm">
                         Mon-Fri 9AM-6PM EST
@@ -107,7 +107,7 @@ export default function Contact() {
                     <div>
                       <h3 className="text-white font-semibold mb-1">Office</h3>
                       <p className="text-cyber-300 group-hover:text-neon-purple transition-colors duration-300">
-                        123 Therapy Street
+                        123 Test Street
                       </p>
                       <p className="text-cyber-300">Speech City, SC 12345</p>
                     </div>

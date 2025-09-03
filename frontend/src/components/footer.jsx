@@ -135,7 +135,7 @@ export default function Footer() {
                   <div>
                     <p className="text-cyber-400 text-sm">Phone</p>
                     <p className="text-white group-hover:text-neon-green transition-colors duration-300">
-                      +1 (555) 123-4567
+                      +963 949 257 963
                     </p>
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export default function Footer() {
                   <div>
                     <p className="text-cyber-400 text-sm">Address</p>
                     <p className="text-white text-sm group-hover:text-neon-purple transition-colors duration-300">
-                      123 Therapy Street
+                      123 Test Street
                       <br />
                       Speech City, SC 12345
                     </p>
