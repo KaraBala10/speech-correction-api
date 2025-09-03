@@ -431,6 +431,278 @@ def get_model():
     return _model
 
 
+def calculate_pronunciation_similarity_ai(target_word, reference, target_char):
+    """
+    AI-enhanced pronunciation similarity calculation using advanced text analysis.
+
+    Args:
+        target_word (str): The word the user should pronounce
+        reference (str): The transcribed text from user's audio
+        target_char (str): The specific character to focus on
+
+    Returns:
+        dict: Contains AI-enhanced test results with detailed analysis
+    """
+    import re
+    from difflib import SequenceMatcher
+
+    # Normalize texts for better comparison
+    def normalize_text(text):
+        """Normalize Arabic text for better comparison"""
+        # Remove extra spaces and normalize
+        text = re.sub(r"\s+", " ", text.strip())
+        # Normalize Arabic characters (optional: handle different forms)
+        return text
+
+    target_word_norm = normalize_text(target_word)
+    reference_norm = normalize_text(reference)
+
+    # AI-Enhanced Similarity Metrics
+
+    # 1. Sequence Similarity (using difflib)
+    sequence_similarity = SequenceMatcher(
+        None, target_word_norm, reference_norm
+    ).ratio()
+
+    # 2. Character-by-Character Analysis with Position Weighting
+    def calculate_position_weighted_similarity():
+        """Calculate similarity with position-based weighting"""
+        max_len = max(len(target_word_norm), len(reference_norm))
+        if max_len == 0:
+            return 0, 0
+
+        total_score = 0
+        char_matches = 0
+
+        for i in range(max_len):
+            target_char_at_pos = (
+                target_word_norm[i] if i < len(target_word_norm) else ""
+            )
+            ref_char_at_pos = reference_norm[i] if i < len(reference_norm) else ""
+
+            # Position weight: beginning and end are more important but not excessive
+            if i == 0 or i == max_len - 1:
+                position_weight = 1.2  # Beginning and end get slightly higher weight
+            else:
+                position_weight = 1.0
+
+            if target_char_at_pos == ref_char_at_pos:
+                char_matches += 1
+                total_score += position_weight
+            elif target_char_at_pos and ref_char_at_pos:
+                # Partial credit for similar characters
+                if target_char_at_pos in "أإآا" and ref_char_at_pos in "أإآا":
+                    total_score += 0.8 * position_weight
+                elif target_char_at_pos in "يى" and ref_char_at_pos in "يى":
+                    total_score += 0.8 * position_weight
+                elif target_char_at_pos in "وؤ" and ref_char_at_pos in "وؤ":
+                    total_score += 0.8 * position_weight
+                elif target_char_at_pos in "هة" and ref_char_at_pos in "هة":
+                    total_score += 0.8 * position_weight
+
+        # Normalize the position weighted score to prevent exceeding 100%
+        position_weighted_score = (total_score / max_len) * 100
+        char_match_score = (char_matches / max_len) * 100
+
+        return min(position_weighted_score, 100), min(char_match_score, 100)
+
+    # 3. Target Character Analysis
+    def analyze_target_character():
+        """AI-enhanced analysis of target character pronunciation"""
+        target_positions = [
+            i for i, char in enumerate(target_word_norm) if char == target_char
+        ]
+        ref_positions = [
+            i for i, char in enumerate(reference_norm) if char == target_char
+        ]
+
+        if not target_positions:
+            return {
+                "found_in_target": False,
+                "found_in_reference": False,
+                "position_accuracy": 0,
+                "character_score": 0,
+            }
+
+        # Calculate position accuracy
+        correct_positions = 0
+        for target_pos in target_positions:
+            if (
+                target_pos < len(reference_norm)
+                and reference_norm[target_pos] == target_char
+            ):
+                correct_positions += 1
+
+        position_accuracy = (correct_positions / len(target_positions)) * 100
+
+        # Character-specific scoring
+        char_score = 0
+        if ref_positions:
+            # Bonus for correct character count (capped at 30)
+            char_count_ratio = min(len(ref_positions), len(target_positions)) / max(
+                len(ref_positions), len(target_positions)
+            )
+            char_score += char_count_ratio * 30
+
+            # Bonus for position accuracy (capped at 70)
+            char_score += min(position_accuracy * 0.7, 70)
+
+        # Cap the character score at 100
+        char_score = min(char_score, 100)
+
+        return {
+            "found_in_target": True,
+            "found_in_reference": len(ref_positions) > 0,
+            "position_accuracy": position_accuracy,
+            "character_score": char_score,
+        }
+
+    # 4. Phonetic Similarity (for Arabic)
+    def calculate_phonetic_similarity():
+        """Calculate phonetic similarity for Arabic text"""
+        # Arabic phonetic groups
+        phonetic_groups = {
+            "أإآا": ["أ", "إ", "آ", "ا"],
+            "يى": ["ي", "ى"],
+            "وؤ": ["و", "ؤ"],
+            "هة": ["ه", "ة"],
+            "ثس": ["ث", "س"],
+            "حه": ["ح", "ه"],
+            "ضظ": ["ض", "ظ"],
+            "طت": ["ط", "ت"],
+            "صس": ["ص", "س"],
+            "قك": ["ق", "ك"],
+            "غخ": ["غ", "خ"],
+        }
+
+        phonetic_score = 0
+        total_chars = 0
+
+        for i in range(min(len(target_word_norm), len(reference_norm))):
+            target_char = target_word_norm[i]
+            ref_char = reference_norm[i]
+
+            if target_char == ref_char:
+                phonetic_score += 1
+            else:
+                # Check phonetic similarity
+                for group in phonetic_groups.values():
+                    if target_char in group and ref_char in group:
+                        phonetic_score += 0.7
+                        break
+
+            total_chars += 1
+
+        return (phonetic_score / total_chars) * 100 if total_chars > 0 else 0
+
+    # Calculate all metrics
+    position_weighted_score, char_match_score = calculate_position_weighted_similarity()
+    target_char_analysis = analyze_target_character()
+    phonetic_score = calculate_phonetic_similarity()
+
+    # AI-Enhanced Final Score Calculation
+    def calculate_ai_final_score():
+        """Calculate final score using weighted combination of all metrics"""
+        weights = {
+            "sequence": 0.25,
+            "position_weighted": 0.30,
+            "char_match": 0.20,
+            "target_char": 0.15,
+            "phonetic": 0.10,
+        }
+
+        # Normalize scores to prevent exceeding 100%
+        normalized_position_score = min(position_weighted_score, 100)
+        normalized_char_match_score = min(char_match_score, 100)
+        normalized_target_char_score = min(target_char_analysis["character_score"], 100)
+        normalized_phonetic_score = min(phonetic_score, 100)
+
+        final_score = (
+            sequence_similarity * 100 * weights["sequence"]
+            + normalized_position_score * weights["position_weighted"]
+            + normalized_char_match_score * weights["char_match"]
+            + normalized_target_char_score * weights["target_char"]
+            + normalized_phonetic_score * weights["phonetic"]
+        )
+
+        # Cap the final score at 100%
+        return min(round(final_score, 2), 100.0)
+
+    final_score = calculate_ai_final_score()
+
+    # AI-Enhanced Decision Making
+    def make_ai_decision():
+        """Make intelligent decision based on multiple factors"""
+        # Base decision on final score
+        if final_score >= 85:
+            return True, "مبارك! لقد لفظت الكلمة بشكل ممتاز"
+        elif final_score >= 70:
+            return True, "مبارك! لقد اجتزت الاختبار بنجاح"
+        elif final_score >= 50:
+            return False, "أداؤك جيد، لكن حاول تحسين نطق الحرف المستهدف"
+        else:
+            return (
+                False,
+                "لقد نطقت معظم الأحرف بشكل خاطئ، استمع للصوت المسجل وحاول مرة أخرى",
+            )
+
+    test_passed, message = make_ai_decision()
+
+    # Special case: if target character is completely missing
+    if not target_char_analysis["found_in_target"]:
+        test_passed = False
+        message = "الحرف المستهدف غير موجود في الكلمة المرجعية"
+    elif (
+        target_char_analysis["found_in_target"]
+        and not target_char_analysis["found_in_reference"]
+    ):
+        test_passed = False
+        message = "لم تنطق الحرف المستهدف بشكل صحيح"
+
+    return {
+        "test_passed": test_passed,
+        "message": message,
+        "similarity_percentage": final_score,
+        "ai_analysis": {
+            "sequence_similarity": round(sequence_similarity * 100, 2),
+            "position_weighted_score": round(position_weighted_score, 2),
+            "character_match_score": round(char_match_score, 2),
+            "target_character_analysis": target_char_analysis,
+            "phonetic_similarity": round(phonetic_score, 2),
+            "final_ai_score": final_score,
+        },
+        "detailed_feedback": {
+            "overall_performance": (
+                "ممتاز"
+                if final_score >= 85
+                else (
+                    "جيد"
+                    if final_score >= 70
+                    else "يحتاج تحسين" if final_score >= 50 else "يحتاج ممارسة أكثر"
+                )
+            ),
+            "target_character_performance": (
+                "ممتاز"
+                if target_char_analysis["position_accuracy"] >= 90
+                else (
+                    "جيد"
+                    if target_char_analysis["position_accuracy"] >= 70
+                    else "يحتاج تحسين"
+                )
+            ),
+            "suggestions": [
+                (
+                    "ركز على نطق الحرف المستهدف بوضوح"
+                    if target_char_analysis["position_accuracy"] < 70
+                    else ""
+                ),
+                "حاول نطق الكلمة ببطء أكثر" if final_score < 60 else "",
+                "استمع للصوت المرجعي عدة مرات" if final_score < 50 else "",
+            ],
+        },
+    }
+
+
 @csrf_exempt
 def transcribe(request):
     if request.method != "POST":
@@ -500,37 +772,18 @@ def transcribe(request):
     if not target_char or len(target_char) != 1:
         return JsonResponse({"error": "target_char must be one character"}, status=400)
 
-    # Comparison logic
-    matches = sum(1 for a, b in zip(reference, target_word) if a == b)
-    max_len = max(len(reference), len(target_word))
-    percentage = (matches / max_len) * 100 if max_len > 0 else 0
-
-    if target_char not in target_word:
-        test_passed = False
-        message = "الحرف المستهدف غير موجود في الكلمة المرجعية"
-    elif target_char in target_word and target_char not in reference:
-        test_passed = False
-        message = "خطأ في الحرف المستهدف"
-    elif percentage < 60:
-        test_passed = False
-        message = "لقد نطقت اغلب الاحرف بشكل خاطئ، استمع مرة اخرى للصوت المسجل ثم حاول مرة اخرى"
-    else:
-        test_passed = True
-        message = "مبارك، لقد اجتزت الاختبار بنجاح"
-        for i, c in enumerate(target_word):
-            if c == target_char:
-                if i >= len(reference) or reference[i] != target_char:
-                    test_passed = False
-                    message = "خطأ في الحرف المستهدف"
-                    break
+    # Use the extracted similarity calculation function
+    similarity_result = calculate_pronunciation_similarity_ai(
+        target_word, reference, target_char
+    )
 
     return JsonResponse(
         {
             "target_word": target_word,
             "reference": reference,
-            "similarity_percentage": round(percentage, 2),
-            "test_passed": test_passed,
-            "message": message if not test_passed else "",
+            "similarity_percentage": similarity_result["similarity_percentage"],
+            "test_passed": similarity_result["test_passed"],
+            "message": similarity_result["message"],
         },
         status=200,
     )
