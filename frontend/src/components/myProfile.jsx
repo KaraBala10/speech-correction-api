@@ -20,6 +20,20 @@ import {
   Upload,
   AlertCircle,
   CheckCircle,
+  TrendingUp,
+  Award,
+  Clock,
+  Zap,
+  Heart,
+  Activity,
+  BarChart3,
+  Settings,
+  Bell,
+  Share2,
+  Download,
+  Eye,
+  Lock,
+  Unlock,
 } from "lucide-react";
 
 export default function MyProfile() {
@@ -249,237 +263,316 @@ export default function MyProfile() {
   }
 
   return (
-    <div className="relative bg-gradient-dark text-white min-h-screen">
-      {/* Cyber Grid Background */}
-      <div className="fixed inset-0 cyber-grid opacity-10 z-[-2]"></div>
+    <div className="relative bg-gradient-dark text-white min-h-screen overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="fixed inset-0 cyber-grid opacity-5 z-[-3]"></div>
+      <div className="fixed inset-0 particles z-[-2]"></div>
 
-      {/* Particle Effects */}
-      <div className="fixed inset-0 particles z-[-1]"></div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-20 h-20 bg-neon-blue rounded-full opacity-20 animate-float"></div>
+      {/* Animated Gradient Orbs */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-xl animate-float"></div>
       <div
-        className="absolute bottom-20 right-20 w-16 h-16 bg-neon-purple rounded-full opacity-20 animate-float"
+        className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl animate-float"
         style={{ animationDelay: "2s" }}
       ></div>
       <div
-        className="absolute top-1/2 left-10 w-12 h-12 bg-neon-green rounded-full opacity-20 animate-float"
+        className="absolute top-1/2 left-10 w-20 h-20 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full blur-xl animate-float"
         style={{ animationDelay: "4s" }}
+      ></div>
+
+      {/* Floating UI Elements */}
+      <div className="absolute top-32 right-32 w-4 h-4 bg-neon-blue rounded-full opacity-60 animate-ping"></div>
+      <div
+        className="absolute bottom-32 left-32 w-3 h-3 bg-neon-purple rounded-full opacity-60 animate-ping"
+        style={{ animationDelay: "1s" }}
       ></div>
 
       <Navbar />
 
       <div className="pt-28 pb-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Enhanced Header Section */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-gradient-hologram text-neon-blue px-8 py-4 rounded-full text-sm font-medium mb-8 animate-fade-in-down border border-neon-blue/30 backdrop-blur-md">
-              <div className="w-6 h-6 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-white text-xs font-bold">AI</span>
+        <div className="max-w-7xl mx-auto">
+          {/* Ultra-Modern Header Section */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-4 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-xl border border-white/10 rounded-2xl px-8 py-4 mb-10 animate-fade-in-down">
+              <div className="relative">
+                <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-white text-sm font-bold">AI</span>
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur opacity-30 animate-pulse"></div>
               </div>
-              <User className="w-4 h-4 animate-pulse" />
-              AI-Powered Profile Dashboard
+              <div className="flex items-center gap-2">
+                <User className="w-5 h-5 text-cyan-400" />
+                <span className="text-cyan-300 font-medium">
+                  AI-Powered Profile
+                </span>
+              </div>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             </div>
-            <h1 className="text-responsive-xl font-bold text-white mb-6">
+
+            <h1 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight">
               My{" "}
-              <span className="gradient-text" data-text="Profile">
-                Profile
+              <span className="relative">
+                <span
+                  className="gradient-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  data-text="Profile"
+                >
+                  Profile
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 blur-xl"></div>
               </span>
             </h1>
-            <p className="text-cyber-300 text-lg max-w-2xl mx-auto">
+
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
               Your personalized AI learning dashboard with advanced progress
-              tracking and intelligent insights
+              tracking, intelligent insights, and real-time performance
+              analytics
             </p>
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
-              <span className="text-cyan-400 text-sm font-medium">
-                AI-Powered Analytics
-              </span>
-              <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.2s" }}
-              ></div>
+
+            <div className="flex items-center justify-center gap-6">
+              <div className="flex items-center gap-2 bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                <span className="text-cyan-400 text-sm font-medium">
+                  Live Analytics
+                </span>
+              </div>
+              <div className="flex items-center gap-2 bg-purple-500/10 px-4 py-2 rounded-full border border-purple-500/20">
+                <div
+                  className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.2s" }}
+                ></div>
+                <span className="text-purple-400 text-sm font-medium">
+                  AI Insights
+                </span>
+              </div>
+              <div className="flex items-center gap-2 bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                <div
+                  className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.4s" }}
+                ></div>
+                <span className="text-green-400 text-sm font-medium">
+                  Real-time
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Enhanced Profile Card */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Ultra-Modern Profile Card */}
             <div className="lg:col-span-1">
-              <div className="card-gradient p-10 text-center animate-fade-in-left relative overflow-hidden">
-                {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 animate-pulse"></div>
+              <div className="relative group">
+                {/* Main Profile Card */}
+                <div className="relative bg-gradient-to-br from-gray-900/50 via-gray-800/30 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center overflow-hidden hover:border-white/20 transition-all duration-500">
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* Profile Picture with Enhanced Styling */}
-                <div className="relative mb-8">
-                  <div className="relative inline-block">
-                    {profile.profile_picture ? (
-                      <img
-                        src={profile.profile_picture}
-                        alt="Profile"
-                        className="w-40 h-40 object-cover border-4 border-neon-blue/30 shadow-neon-blue neon-glow hover:scale-105 transition-transform duration-300"
-                        style={{
-                          clipPath:
-                            "polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)",
-                        }}
-                      />
-                    ) : (
-                      <div
-                        className="w-40 h-40 bg-cyber-800/50 flex items-center justify-center text-cyber-400 border-4 border-neon-blue/30 shadow-neon-blue neon-glow hover:scale-105 transition-transform duration-300"
-                        style={{
-                          clipPath:
-                            "polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)",
-                        }}
-                      >
-                        <Camera className="w-16 h-16" />
+                  {/* Profile Picture with Modern Design */}
+                  <div className="relative mb-8">
+                    <div className="relative inline-block">
+                      {profile.profile_picture ? (
+                        <div className="relative">
+                          <img
+                            src={profile.profile_picture}
+                            alt="Profile"
+                            className="w-32 h-32 object-cover rounded-2xl border-2 border-white/20 shadow-2xl hover:scale-105 transition-all duration-300"
+                          />
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                      ) : (
+                        <div className="w-32 h-32 bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl flex items-center justify-center border-2 border-white/20 shadow-2xl hover:scale-105 transition-all duration-300">
+                          <Camera className="w-12 h-12 text-gray-400" />
+                        </div>
+                      )}
+
+                      {/* Status Indicator */}
+                      <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center border-2 border-gray-900 shadow-lg">
+                        <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                       </div>
-                    )}
-                    {/* AI Badge */}
-                    <div
-                      className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center animate-pulse"
-                      style={{
-                        clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)",
-                      }}
+
+                      {/* AI Badge */}
+                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
+                        <span className="text-white text-xs font-bold">AI</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* User Info */}
+                  <h2 className="text-2xl font-bold text-white mb-2">
+                    {user.username || "User"}
+                  </h2>
+                  <p className="text-gray-400 mb-6 text-sm">
+                    AI Learning Enthusiast
+                  </p>
+
+                  {/* Quick Stats */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <Trophy className="w-5 h-5 text-yellow-400" />
+                        <span className="text-white font-bold text-xl">12</span>
+                      </div>
+                      <p className="text-gray-400 text-xs">Achievements</p>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <Star className="w-5 h-5 text-yellow-400" />
+                        <span className="text-white font-bold text-xl">
+                          4.8
+                        </span>
+                      </div>
+                      <p className="text-gray-400 text-xs">Rating</p>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="space-y-3">
+                    <button
+                      onClick={openEditModal}
+                      className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                     >
-                      <span className="text-white text-xs font-bold">AI</span>
+                      <Edit className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                      Edit Profile
+                    </button>
+
+                    <div className="flex gap-2">
+                      <button className="flex-1 bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </button>
+                      <button className="flex-1 bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <Download className="w-4 h-4" />
+                        Export
+                      </button>
                     </div>
                   </div>
                 </div>
-
-                <h2 className="text-3xl font-bold text-white mb-3">
-                  {user.username || "User"}
-                </h2>
-                <p className="text-cyber-300 mb-8 text-lg">
-                  AI Learning Enthusiast
-                </p>
-
-                {/* Enhanced Stats */}
-                <div className="grid grid-cols-2 gap-6 mb-8">
-                  <div className="bg-cyber-800/30 p-6 rounded-2xl border border-cyber-700/50 hover-lift">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Trophy className="w-6 h-6 text-neon-green" />
-                      <span className="text-white font-bold text-2xl">12</span>
-                    </div>
-                    <p className="text-cyber-300 text-sm">Achievements</p>
-                  </div>
-                  <div className="bg-cyber-800/30 p-6 rounded-2xl border border-cyber-700/50 hover-lift">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Star className="w-6 h-6 text-neon-yellow" />
-                      <span className="text-white font-bold text-2xl">4.8</span>
-                    </div>
-                    <p className="text-cyber-300 text-sm">Rating</p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={openEditModal}
-                  className="btn-primary w-full group text-lg py-4"
-                >
-                  <Edit className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300" />
-                  Edit Profile
-                </button>
               </div>
             </div>
 
             {/* Enhanced Profile Details */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-3 space-y-8">
               {/* Profile Information Card */}
-              <div className="card-gradient p-10 animate-fade-in-right">
-                <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-4">
-                  <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <Brain className="w-6 h-6 text-white" />
-                  </div>
-                  Profile Information
-                </h3>
+              <div className="relative bg-gradient-to-br from-gray-900/50 via-gray-800/30 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 overflow-hidden hover:border-white/20 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-6 group">
-                      <div className="w-14 h-14 bg-neon-blue/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-blue/30 transition-all duration-300 neon-glow">
-                        <User className="w-7 h-7 text-neon-blue" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                          Username
-                        </h4>
-                        <p className="text-white font-semibold text-lg">
-                          {user.username || "Not available"}
-                        </p>
-                      </div>
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Brain className="w-6 h-6 text-white" />
                     </div>
-
-                    <div className="flex items-start space-x-6 group">
-                      <div className="w-14 h-14 bg-neon-green/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-green/30 transition-all duration-300 neon-glow">
-                        <Mail className="w-7 h-7 text-neon-green" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                          Email
-                        </h4>
-                        <p className="text-white font-semibold text-lg">
-                          {user.email || "Not available"}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-6 group">
-                      <div className="w-14 h-14 bg-neon-purple/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-purple/30 transition-all duration-300 neon-glow">
-                        <FileText className="w-7 h-7 text-neon-purple" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                          Bio
-                        </h4>
-                        <p className="text-white text-lg">
-                          {profile.bio || "No bio provided"}
-                        </p>
-                      </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">
+                        Profile Information
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Your personal details and preferences
+                      </p>
                     </div>
                   </div>
 
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-6 group">
-                      <div className="w-14 h-14 bg-neon-cyan/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-cyan/30 transition-all duration-300 neon-glow">
-                        <MapPin className="w-7 h-7 text-neon-cyan" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="group">
+                        <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                          <div className="w-12 h-12 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <User className="w-6 h-6 text-cyan-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-gray-300 text-sm font-medium mb-1">
+                              Username
+                            </h4>
+                            <p className="text-white font-semibold">
+                              {user.username || "Not available"}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                          Country
-                        </h4>
-                        <p className="text-white text-lg">
-                          {profile.country || "Not specified"}
-                        </p>
+
+                      <div className="group">
+                        <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                          <div className="w-12 h-12 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Mail className="w-6 h-6 text-green-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-gray-300 text-sm font-medium mb-1">
+                              Email
+                            </h4>
+                            <p className="text-white font-semibold">
+                              {user.email || "Not available"}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="group">
+                        <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                          <div className="w-12 h-12 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <FileText className="w-6 h-6 text-purple-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-gray-300 text-sm font-medium mb-1">
+                              Bio
+                            </h4>
+                            <p className="text-white">
+                              {profile.bio || "No bio provided"}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    {profile.governorate && (
-                      <div className="flex items-start space-x-6 group">
-                        <div className="w-14 h-14 bg-neon-pink/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-pink/30 transition-all duration-300 neon-glow">
-                          <MapPin className="w-7 h-7 text-neon-pink" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                            Governorate
-                          </h4>
-                          <p className="text-white text-lg">
-                            {profile.governorate}
-                          </p>
+                    <div className="space-y-4">
+                      <div className="group">
+                        <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <MapPin className="w-6 h-6 text-blue-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-gray-300 text-sm font-medium mb-1">
+                              Country
+                            </h4>
+                            <p className="text-white">
+                              {profile.country || "Not specified"}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    )}
 
-                    <div className="flex items-start space-x-6 group">
-                      <div className="w-14 h-14 bg-neon-pink/20 rounded-2xl flex items-center justify-center group-hover:bg-neon-pink/30 transition-all duration-300 neon-glow">
-                        <Calendar className="w-7 h-7 text-neon-pink" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-cyber-200 text-sm font-medium mb-2">
-                          Member Since
-                        </h4>
-                        <p className="text-white text-lg">
-                          {profile.created_at
-                            ? new Date(profile.created_at).toLocaleDateString()
-                            : "Not available"}
-                        </p>
+                      {profile.governorate && (
+                        <div className="group">
+                          <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                              <MapPin className="w-6 h-6 text-pink-400" />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-gray-300 text-sm font-medium mb-1">
+                                Governorate
+                              </h4>
+                              <p className="text-white">
+                                {profile.governorate}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="group">
+                        <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                          <div className="w-12 h-12 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Calendar className="w-6 h-6 text-orange-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-gray-300 text-sm font-medium mb-1">
+                              Member Since
+                            </h4>
+                            <p className="text-white">
+                              {profile.created_at
+                                ? new Date(
+                                    profile.created_at
+                                  ).toLocaleDateString()
+                                : "Not available"}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -487,76 +580,176 @@ export default function MyProfile() {
               </div>
 
               {/* Enhanced AI Progress Section */}
-              <div
-                className="card-gradient p-10 animate-fade-in-right"
-                style={{ animationDelay: "200ms" }}
-              >
-                <h3 className="text-3xl font-bold text-white mb-10 flex items-center gap-4">
-                  <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  AI Learning Progress
-                </h3>
+              <div className="relative bg-gradient-to-br from-gray-900/50 via-gray-800/30 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 overflow-hidden hover:border-white/20 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-cyan-500/5 to-blue-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-cyber-800/30 p-8 rounded-2xl border border-cyber-700/50 hover-lift group">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-gradient-neon rounded-2xl flex items-center justify-center text-cyber-950 group-hover:scale-110 transition-transform duration-300">
-                        <Brain className="w-7 h-7" />
-                      </div>
-                      <h4 className="text-white font-semibold text-lg">
-                        Lessons Completed
-                      </h4>
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Sparkles className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-4xl font-bold text-neon-blue mb-3">24</p>
-                    <p className="text-cyber-300">This month</p>
-                    <div className="w-full bg-cyber-800 rounded-full h-2 mt-4">
-                      <div
-                        className="bg-gradient-neon h-2 rounded-full"
-                        style={{ width: "80%" }}
-                      ></div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">
+                        AI Learning Progress
+                      </h3>
+                      <p className="text-gray-400 text-sm">
+                        Your learning journey and achievements
+                      </p>
                     </div>
                   </div>
 
-                  <div className="bg-cyber-800/30 p-8 rounded-2xl border border-cyber-700/50 hover-lift group">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-gradient-neon rounded-2xl flex items-center justify-center text-cyber-950 group-hover:scale-110 transition-transform duration-300">
-                        <Target className="w-7 h-7" />
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Lessons Completed */}
+                    <div className="group relative">
+                      <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Brain className="w-6 h-6 text-blue-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-semibold">
+                              Lessons
+                            </h4>
+                            <p className="text-gray-400 text-sm">Completed</p>
+                          </div>
+                        </div>
+                        <div className="flex items-baseline gap-2 mb-3">
+                          <span className="text-3xl font-bold text-blue-400">
+                            24
+                          </span>
+                          <span className="text-gray-400 text-sm">
+                            this month
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div
+                            className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-1000"
+                            style={{ width: "80%" }}
+                          ></div>
+                        </div>
+                        <div className="flex items-center gap-2 mt-3">
+                          <TrendingUp className="w-4 h-4 text-green-400" />
+                          <span className="text-green-400 text-sm">
+                            +12% from last month
+                          </span>
+                        </div>
                       </div>
-                      <h4 className="text-white font-semibold text-lg">
-                        Accuracy Rate
-                      </h4>
                     </div>
-                    <p className="text-4xl font-bold text-neon-green mb-3">
-                      87%
-                    </p>
-                    <p className="text-cyber-300">Average score</p>
-                    <div className="w-full bg-cyber-800 rounded-full h-2 mt-4">
-                      <div
-                        className="bg-gradient-to-r from-green-500 to-cyan-500 h-2 rounded-full"
-                        style={{ width: "87%" }}
-                      ></div>
+
+                    {/* Accuracy Rate */}
+                    <div className="group relative">
+                      <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Target className="w-6 h-6 text-green-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-semibold">
+                              Accuracy
+                            </h4>
+                            <p className="text-gray-400 text-sm">Rate</p>
+                          </div>
+                        </div>
+                        <div className="flex items-baseline gap-2 mb-3">
+                          <span className="text-3xl font-bold text-green-400">
+                            87%
+                          </span>
+                          <span className="text-gray-400 text-sm">average</span>
+                        </div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div
+                            className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full transition-all duration-1000"
+                            style={{ width: "87%" }}
+                          ></div>
+                        </div>
+                        <div className="flex items-center gap-2 mt-3">
+                          <Award className="w-4 h-4 text-yellow-400" />
+                          <span className="text-yellow-400 text-sm">
+                            Excellent performance
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Learning Streak */}
+                    <div className="group relative">
+                      <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Zap className="w-6 h-6 text-purple-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-semibold">Streak</h4>
+                            <p className="text-gray-400 text-sm">Days</p>
+                          </div>
+                        </div>
+                        <div className="flex items-baseline gap-2 mb-3">
+                          <span className="text-3xl font-bold text-purple-400">
+                            15
+                          </span>
+                          <span className="text-gray-400 text-sm">
+                            in a row
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-1000"
+                            style={{ width: "75%" }}
+                          ></div>
+                        </div>
+                        <div className="flex items-center gap-2 mt-3">
+                          <Heart className="w-4 h-4 text-red-400" />
+                          <span className="text-red-400 text-sm">
+                            Keep it up!
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="bg-cyber-800/30 p-8 rounded-2xl border border-cyber-700/50 hover-lift group">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-gradient-neon rounded-2xl flex items-center justify-center text-cyber-950 group-hover:scale-110 transition-transform duration-300">
-                        <Shield className="w-7 h-7" />
+                  {/* Additional Stats Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <Activity className="w-5 h-5 text-cyan-400" />
+                        <div>
+                          <p className="text-white font-semibold text-lg">
+                            156
+                          </p>
+                          <p className="text-gray-400 text-xs">Total Hours</p>
+                        </div>
                       </div>
-                      <h4 className="text-white font-semibold text-lg">
-                        Learning Streak
-                      </h4>
                     </div>
-                    <p className="text-4xl font-bold text-neon-purple mb-3">
-                      15
-                    </p>
-                    <p className="text-cyber-300">Days in a row</p>
-                    <div className="w-full bg-cyber-800 rounded-full h-2 mt-4">
-                      <div
-                        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
-                        style={{ width: "75%" }}
-                      ></div>
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <BarChart3 className="w-5 h-5 text-green-400" />
+                        <div>
+                          <p className="text-white font-semibold text-lg">
+                            92%
+                          </p>
+                          <p className="text-gray-400 text-xs">Success Rate</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 text-orange-400" />
+                        <div>
+                          <p className="text-white font-semibold text-lg">
+                            2.5h
+                          </p>
+                          <p className="text-gray-400 text-xs">Daily Average</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center gap-3">
+                        <Bell className="w-5 h-5 text-pink-400" />
+                        <div>
+                          <p className="text-white font-semibold text-lg">8</p>
+                          <p className="text-gray-400 text-xs">Badges</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -566,149 +759,166 @@ export default function MyProfile() {
         </div>
       </div>
 
-      {/* Edit Profile Modal */}
+      {/* Enhanced Edit Profile Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="card-gradient p-8 rounded-3xl shadow-glass border border-neon-blue/20 backdrop-blur-md w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-fade-in-up">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                <Edit className="w-6 h-6 text-neon-blue" />
-                Edit Profile
-              </h2>
-              <button
-                onClick={closeEditModal}
-                className="w-10 h-10 bg-cyber-800/50 rounded-full flex items-center justify-center text-cyber-300 hover:text-white hover:bg-cyber-700/50 transition-all duration-300"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-fade-in-up">
+            {/* Modal Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl"></div>
 
-            {/* Success Message */}
-            {editSuccess && (
-              <div className="mb-6 p-4 bg-neon-green/10 border border-neon-green/30 rounded-xl flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-neon-green" />
-                <span className="text-neon-green font-medium">
-                  Profile updated successfully!
-                </span>
-              </div>
-            )}
-
-            {/* Error Message */}
-            {editError && (
-              <div className="mb-6 p-4 bg-neon-red/10 border border-neon-red/30 rounded-xl flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-neon-red" />
-                <span className="text-neon-red font-medium">{editError}</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Profile Picture Upload */}
-              <div className="text-center">
-                <div className="relative inline-block">
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-neon-blue/30 shadow-neon-blue">
-                    {previewImage ? (
-                      <img
-                        src={previewImage}
-                        alt="Profile Preview"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-cyber-800/50 flex items-center justify-center text-cyber-400">
-                        <Camera className="w-12 h-12" />
-                      </div>
-                    )}
+            <div className="relative p-8">
+              {/* Enhanced Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Edit className="w-6 h-6 text-white" />
                   </div>
-                  <label className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-neon rounded-full flex items-center justify-center text-cyber-950 neon-glow cursor-pointer hover:scale-110 transition-transform duration-300">
-                    <Upload className="w-5 h-5" />
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="hidden"
-                    />
-                  </label>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">
+                      Edit Profile
+                    </h2>
+                    <p className="text-gray-400 text-sm">
+                      Update your personal information
+                    </p>
+                  </div>
                 </div>
-                <p className="text-cyber-300 text-sm mt-2">
-                  Click to upload new profile picture
-                </p>
-              </div>
-
-              {/* Bio */}
-              <div>
-                <label className="block text-cyber-200 text-sm font-medium mb-2">
-                  Bio
-                </label>
-                <textarea
-                  name="bio"
-                  value={formData.bio}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="w-full bg-cyber-800/50 border border-cyber-700/50 rounded-xl px-4 py-3 text-white placeholder-cyber-400 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-neon-blue transition-all duration-300 backdrop-blur-md"
-                  placeholder="Tell us about yourself..."
-                />
-              </div>
-
-              {/* Country */}
-              <div>
-                <label className="block text-cyber-200 text-sm font-medium mb-2">
-                  Country
-                </label>
-                <input
-                  type="text"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleInputChange}
-                  className="w-full bg-cyber-800/50 border border-cyber-700/50 rounded-xl px-4 py-3 text-white placeholder-cyber-400 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-neon-blue transition-all duration-300 backdrop-blur-md"
-                  placeholder="Enter your country"
-                />
-              </div>
-
-              {/* Governorate */}
-              <div>
-                <label className="block text-cyber-200 text-sm font-medium mb-2">
-                  Governorate
-                </label>
-                <input
-                  type="text"
-                  name="governorate"
-                  value={formData.governorate}
-                  onChange={handleInputChange}
-                  className="w-full bg-cyber-800/50 border border-cyber-700/50 rounded-xl px-4 py-3 text-white placeholder-cyber-400 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-neon-blue transition-all duration-300 backdrop-blur-md"
-                  placeholder="Enter your governorate"
-                />
-              </div>
-
-              {/* Submit Button */}
-              <div className="flex gap-4 pt-4">
                 <button
-                  type="button"
                   onClick={closeEditModal}
-                  className="btn-outline flex-1"
+                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 backdrop-blur-sm"
                 >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={editLoading}
-                  className={`btn-primary flex-1 flex items-center justify-center gap-2 ${
-                    editLoading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  {editLoading ? (
-                    <>
-                      <div className="spinner w-4 h-4"></div>
-                      Updating...
-                    </>
-                  ) : (
-                    <>
-                      <Save className="w-4 h-4" />
-                      Save Changes
-                    </>
-                  )}
+                  <X className="w-5 h-5" />
                 </button>
               </div>
-            </form>
+
+              {/* Enhanced Success Message */}
+              {editSuccess && (
+                <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-green-400 font-medium">
+                    Profile updated successfully!
+                  </span>
+                </div>
+              )}
+
+              {/* Enhanced Error Message */}
+              {editError && (
+                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-red-400 font-medium">{editError}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Enhanced Profile Picture Upload */}
+                <div className="text-center">
+                  <div className="relative inline-block">
+                    <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
+                      {previewImage ? (
+                        <img
+                          src={previewImage}
+                          alt="Profile Preview"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                          <Camera className="w-12 h-12 text-gray-400" />
+                        </div>
+                      )}
+                    </div>
+                    <label className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300">
+                      <Upload className="w-5 h-5" />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-3">
+                    Click to upload new profile picture
+                  </p>
+                </div>
+
+                {/* Enhanced Form Fields */}
+                <div className="space-y-4">
+                  {/* Bio */}
+                  <div>
+                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                      Bio
+                    </label>
+                    <textarea
+                      name="bio"
+                      value={formData.bio}
+                      onChange={handleInputChange}
+                      rows={3}
+                      className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
+                      placeholder="Tell us about yourself..."
+                    />
+                  </div>
+
+                  {/* Country */}
+                  <div>
+                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
+                      placeholder="Enter your country"
+                    />
+                  </div>
+
+                  {/* Governorate */}
+                  <div>
+                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                      Governorate
+                    </label>
+                    <input
+                      type="text"
+                      name="governorate"
+                      value={formData.governorate}
+                      onChange={handleInputChange}
+                      className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
+                      placeholder="Enter your governorate"
+                    />
+                  </div>
+                </div>
+
+                {/* Enhanced Submit Buttons */}
+                <div className="flex gap-4 pt-6">
+                  <button
+                    type="button"
+                    onClick={closeEditModal}
+                    className="flex-1 bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/10"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={editLoading}
+                    className={`flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${
+                      editLoading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    {editLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Updating...
+                      </>
+                    ) : (
+                      <>
+                        <Save className="w-4 h-4" />
+                        Save Changes
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

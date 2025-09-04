@@ -416,7 +416,7 @@ def en_levels(request):
 # ai
 
 MODEL_DIR = "models"
-MODEL_SIZE = "small"
+MODEL_SIZE = "medium"
 
 if not os.path.exists(MODEL_DIR):
     os.makedirs(MODEL_DIR)
